@@ -24,10 +24,19 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    setFocus,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    mode: 'onBlur',
   });
+
+  const onError = () => {
+    const fieldNames = Object.keys(errors) as (keyof ContactFormData)[];
+    if (fieldNames.length > 0) {
+      setFocus(fieldNames[0]);
+    }
+  };
 
   async function onSubmit(data: ContactFormData) {
     setServerError(null);
@@ -72,7 +81,7 @@ export function ContactForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onError)}
       noValidate
       className="flex flex-col gap-5"
     >
@@ -89,6 +98,7 @@ export function ContactForm() {
         />
       </div>
 
+      {/* ── Name ──────────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="name"
@@ -102,15 +112,17 @@ export function ContactForm() {
           autoComplete="name"
           placeholder="Your name"
           className={inputBase}
+          aria-describedby={errors.name ? 'name-error' : undefined}
           {...register('name')}
         />
         {errors.name && (
-          <p className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="name-error" className="font-body text-xs text-status-error mt-1" role="alert">
             {errors.name.message}
           </p>
         )}
       </div>
 
+      {/* ── Email ─────────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="email"
@@ -124,15 +136,17 @@ export function ContactForm() {
           autoComplete="email"
           placeholder="you@example.com"
           className={inputBase}
+          aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
         {errors.email && (
-          <p className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="email-error" className="font-body text-xs text-status-error mt-1" role="alert">
             {errors.email.message}
           </p>
         )}
       </div>
 
+      {/* ── Subject ───────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="subject"
@@ -143,6 +157,7 @@ export function ContactForm() {
         <select
           id="subject"
           className={cn(inputBase, 'cursor-pointer')}
+          aria-describedby={errors.subject ? 'subject-error' : undefined}
           {...register('subject')}
         >
           <option value="" disabled>
@@ -155,12 +170,13 @@ export function ContactForm() {
           ))}
         </select>
         {errors.subject && (
-          <p className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="subject-error" className="font-body text-xs text-status-error mt-1" role="alert">
             {errors.subject.message}
           </p>
         )}
       </div>
 
+      {/* ── Message ───────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="message"
@@ -173,10 +189,11 @@ export function ContactForm() {
           rows={5}
           placeholder="What's on your mind?"
           className={cn(inputBase, 'resize-y')}
+          aria-describedby={errors.message ? 'message-error' : undefined}
           {...register('message')}
         />
         {errors.message && (
-          <p className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="message-error" className="font-body text-xs text-status-error mt-1" role="alert">
             {errors.message.message}
           </p>
         )}

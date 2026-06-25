@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  background-color: var(--color-obsidian);
+  background-color: #000;
   color: var(--color-ink-primary);
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.8vw, 1.125rem);
@@ -59,7 +59,7 @@ body::after {
   z-index: 0;
   background: radial-gradient(
     ellipse at 30% 20%,
-    color-mix(in srgb, var(--color-gold) 3%, transparent),
+    color-mix(in srgb, var(--color-gold) 8%, transparent),
     transparent 70%
   );
 }
@@ -100,7 +100,6 @@ body::before {
   text-decoration: none;
   transition: top 0.1s;
 }
-
 .skip-link:focus {
   top: 1rem;
 }

@@ -25,7 +25,7 @@ export default function ContactPage() {
               Or book a call:
             </span>
             <ExternalLink
-              href="https://cal.com/aditya-jha/30min"
+              href={siteConfig.calUrl}
               className="font-body text-sm text-gold hover:underline transition-colors duration-150"
             >
               30 min →
