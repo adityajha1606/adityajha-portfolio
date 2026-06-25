@@ -67,6 +67,7 @@ export function Hero() {
           aria-hidden="true"
         />
 
+        {/* ── LCP fix: painted instantly at 0.01 opacity, then fades in ── */}
         <motion.p
           className="
             font-body text-ink-secondary
@@ -74,7 +75,13 @@ export function Hero() {
             tracking-[0.15em] uppercase
             mb-3
           "
-          {...fadeIn(ROLE_DELAY)}
+          initial={{ opacity: 0.01 }}
+          animate={nameComplete ? { opacity: 1 } : { opacity: 0.01 }}
+          transition={{
+            delay: prefersReducedMotion ? 0 : ROLE_DELAY,
+            duration: prefersReducedMotion ? 0 : 0.4,
+            ease: EASE_OUT,
+          }}
         >
           ML Engineer&nbsp;·&nbsp;Full Stack Developer
         </motion.p>
