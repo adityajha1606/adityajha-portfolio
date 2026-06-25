@@ -65,6 +65,7 @@ export function AnimatedName({
   return (
     <motion.div
       className={baseClassName}
+      role="text"               /* ← Fix: valid ARIA role for aria-label */
       aria-label={name}
       variants={containerVariants}
       initial="hidden"

@@ -9,7 +9,7 @@
   --color-ink-bright: #f0ede8;
   --color-ink-primary: #c8c4bc;
   --color-ink-secondary: #8a8680;
-  --color-ink-muted: #504e4a;
+  --color-ink-muted: #625e56; /* ← Fix: lightened for AA contrast */
   --color-gold: #c9a84c;
   --color-gold-bright: #e2be6a;
   --color-gold-dim: #8a6e2e;

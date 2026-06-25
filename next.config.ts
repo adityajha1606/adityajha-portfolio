@@ -7,8 +7,8 @@ const securityHeaders: { key: string; value: string }[] = [
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
   { key: 'X-XSS-Protection', value: '0' },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },  /* ← Fix: COOP header */
   // TEMPORARY: Disable CSP until nonce middleware is implemented.
-  // Right now a strict script-src 'self' blocks Next.js client-side hydration.
   // {
   //   key: 'Content-Security-Policy',
   //   value: [
