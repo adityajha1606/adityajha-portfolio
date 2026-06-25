@@ -11,7 +11,7 @@ export function BeyondCodePreview() {
 
       <Link href="/beyond-code" className="block group">
         <Card hover className="p-8">
-          <p className="font-body text-ink-secondary leading-relaxed mb-8">
+          <p className="font-body text-ink-secondary leading-relaxed mb-8 prose">
             Films, books, German, and the stuff I&rsquo;m curious about.
           </p>
 

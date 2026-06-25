@@ -50,7 +50,7 @@ body {
   line-height: 1.7;
 }
 
-/* ── Ambient gold nebula — faint warm light source, upper-left ── */
+/* ── Ambient gold nebula ── */
 body::after {
   content: '';
   position: fixed;
@@ -64,7 +64,7 @@ body::after {
   );
 }
 
-/* ── Grain overlay — sits above nebula, below content ── */
+/* ── Grain overlay ── */
 body::before {
   content: '';
   position: fixed;
@@ -104,29 +104,74 @@ body::before {
   top: 1rem;
 }
 
-/* ── Scrollbar (static rules – preserved by @layer base) ── */
+/* ── Scrollbar ── */
 @layer base {
   ::-webkit-scrollbar {
     width: 6px;
   }
-
   ::-webkit-scrollbar-track {
     background: var(--color-obsidian);
   }
-
   ::-webkit-scrollbar-thumb {
     background: var(--color-obsidian-border);
     transition: background 0.4s ease;
   }
-
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-gold-dim);
   }
-
-  /* Firefox baseline */
   html {
     scrollbar-color: var(--color-obsidian-border) var(--color-obsidian);
     scrollbar-width: thin;
+  }
+}
+
+/* ── Prose line‑length cap ── */
+.prose {
+  max-width: 75ch;
+}
+
+/* ── Forced‑colors mode ── */
+@media (forced-colors: active) {
+  body {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .text-gold,
+  .text-gold-bright,
+  .text-gold-dim {
+    color: Highlight;
+  }
+
+  .bg-gold,
+  .bg-gold-bright {
+    background-color: Highlight;
+  }
+
+  .border-gold,
+  .border-gold-dim {
+    border-color: Highlight;
+  }
+
+  .text-ink-bright,
+  .text-ink-primary,
+  .text-ink-secondary {
+    color: CanvasText;
+  }
+
+  .text-ink-muted {
+    color: GrayText;
+  }
+
+  .bg-obsidian,
+  .bg-obsidian-2,
+  .bg-obsidian-3,
+  .bg-obsidian-4 {
+    background-color: Canvas;
+  }
+
+  .border-obsidian-border {
+    border-color: ButtonBorder;
   }
 }
 

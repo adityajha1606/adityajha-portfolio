@@ -12,7 +12,7 @@ const credentials = [
   },
   {
     label: 'Coding Profiles',
-    description: '200+ LeetCode · Codeforces · Striver A2Z in progress',
+    description: 'LeetCode · Github· Codeforces · CodeChef · HackerRank',
     href: '/coding-profiles',
     external: false,
   },
@@ -41,7 +41,7 @@ function CredentialCard({
       <p className="font-body text-xs uppercase tracking-widest text-gold">
         {label}
       </p>
-      <p className="font-body text-ink-secondary text-sm leading-relaxed flex-1">
+      <p className="font-body text-ink-secondary text-sm leading-relaxed flex-1 prose">
         {description}
       </p>
       <span className="inline-block font-body text-xs text-gold tracking-wide group-hover:text-gold-bright transition-colors duration-150">

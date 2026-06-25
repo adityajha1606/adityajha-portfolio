@@ -10,8 +10,8 @@ export function FeaturedWork() {
   return (
     <div>
       <Link href="/work" className="group inline-block no-underline mb-8">
-        <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold group-hover:text-gold-bright transition-colors duration-150 flex items-center gap-2 border-b border-gold/30 group-hover:border-gold pb-0.5">
-          Selected Work <GoldDot linkMode />
+        <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold group-hover:text-gold-bright transition-colors duration-150 flex items-center gap-2">
+          Selected Work <GoldDot />
         </h2>
       </Link>
 
@@ -31,7 +31,7 @@ export function FeaturedWork() {
       <div className="mt-10">
         <Link
           href="/work"
-          className="font-body font-medium text-sm text-gold hover:underline transition-colors duration-150"
+          className="inline-flex items-center min-h-[24px] font-body font-medium text-sm text-gold hover:underline transition-colors duration-150"
         >
           See all work →
         </Link>

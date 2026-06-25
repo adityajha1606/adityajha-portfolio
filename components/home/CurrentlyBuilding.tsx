@@ -15,7 +15,7 @@ export function CurrentlyBuilding() {
 
       <Link
         href="/work?status=wip"
-        className="inline-block font-body text-xs text-gold tracking-wide hover:text-gold-bright transition-colors duration-150"
+        className="inline-flex items-center min-h-[24px] font-body text-xs text-gold tracking-wide hover:text-gold-bright transition-colors duration-150"
       >
         View ongoing projects →
       </Link>
