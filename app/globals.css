@@ -9,7 +9,7 @@
   --color-ink-bright: #f0ede8;
   --color-ink-primary: #c8c4bc;
   --color-ink-secondary: #8a8680;
-  --color-ink-muted: #625e56; /* ← Fix: lightened for AA contrast */
+  --color-ink-muted: #6b6762; /* ← Fix: lightened for AA contrast */
   --color-gold: #c9a84c;
   --color-gold-bright: #e2be6a;
   --color-gold-dim: #8a6e2e;
@@ -122,6 +122,13 @@ body::before {
   html {
     scrollbar-color: var(--color-obsidian-border) var(--color-obsidian);
     scrollbar-width: thin;
+  }
+
+  /* Keyframes for the hero subtitle fade‑in (LCP paint fix) */
+  @keyframes fadeInRole {
+    to {
+      opacity: 1;
+    }
   }
 }
 

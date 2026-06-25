@@ -67,24 +67,21 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        {/* ── LCP fix: painted instantly at 0.01 opacity, then fades in ── */}
-        <motion.p
-          className="
+        {/* ── Role subtitle — LCP fix: regular p with CSS animation ── */}
+        <p
+          className={`
             font-body text-ink-secondary
             text-base md:text-lg
             tracking-[0.15em] uppercase
             mb-3
-          "
-          initial={{ opacity: 0.01 }}
-          animate={nameComplete ? { opacity: 1 } : { opacity: 0.01 }}
-          transition={{
-            delay: prefersReducedMotion ? 0 : ROLE_DELAY,
-            duration: prefersReducedMotion ? 0 : 0.4,
-            ease: EASE_OUT,
-          }}
+            ${nameComplete
+              ? 'animate-[fadeInRole_0.4s_ease-out_0.2s_forwards]'
+              : 'opacity-0'
+            }
+          `}
         >
           ML Engineer&nbsp;·&nbsp;Full Stack Developer
-        </motion.p>
+        </p>
 
         <motion.p
           className="
@@ -106,9 +103,16 @@ export function Hero() {
           <Button variant="gold" href="/work">
             View my work
           </Button>
-          <Button variant="ghost" href="/resume.pdf" external>
+
+          {/* ── Resume button — plain anchor to avoid RSC routing ── */}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap border px-5 py-2.5 font-body text-sm font-medium tracking-[0.04em] no-underline transition-[background-color,color,border-color,box-shadow] duration-200 border-obsidian-border bg-transparent text-ink-secondary hover:border-gold-dim hover:text-ink-primary focus-visible:border-gold-dim focus-visible:text-ink-primary"
+          >
             Download resume
-          </Button>
+          </a>
         </motion.div>
       </div>
 
