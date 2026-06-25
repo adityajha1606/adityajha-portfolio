@@ -25,8 +25,10 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --container-content: 70rem;
-  --spacing-section-mobile: 4rem;
-  --spacing-section-desktop: 6rem;
+
+  /* ↓ Group 1: reduced from 4rem / 6rem */
+  --spacing-section-mobile: 3rem;
+  --spacing-section-desktop: 5rem;
 }
 
 :root {
@@ -51,7 +53,8 @@ body {
   background-color: var(--color-obsidian);
   color: var(--color-ink-primary);
   font-family: var(--font-body);
-  font-size: 1rem;
+  /* ↓ Group 1: fluid type scale instead of flat 1rem */
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.7;
 }
 
@@ -90,6 +93,7 @@ body::before {
   text-decoration: none;
   transition: top 0.1s;
 }
+
 .skip-link:focus {
   top: 1rem;
 }
@@ -97,12 +101,15 @@ body::before {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-obsidian);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-obsidian-border);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold-dim);
 }
