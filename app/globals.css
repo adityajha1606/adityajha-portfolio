@@ -6,26 +6,20 @@
   --color-obsidian-3: #161619;
   --color-obsidian-4: #1e1e22;
   --color-obsidian-border: #2a2a2f;
-
   --color-ink-bright: #f0ede8;
   --color-ink-primary: #c8c4bc;
   --color-ink-secondary: #8a8680;
   --color-ink-muted: #504e4a;
-
   --color-gold: #c9a84c;
   --color-gold-bright: #e2be6a;
   --color-gold-dim: #8a6e2e;
-
   --color-status-live: #4a8c5c;
   --color-status-wip: #8c6a4a;
   --color-status-error: #8c3a3a;
-
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
   --container-content: 70rem;
-
   --spacing-section-mobile: 3rem;
   --spacing-section-desktop: 5rem;
 }
@@ -56,6 +50,21 @@ body {
   line-height: 1.7;
 }
 
+/* ── Ambient gold nebula — faint warm light source, upper-left ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    color-mix(in srgb, var(--color-gold) 3%, transparent),
+    transparent 70%
+  );
+}
+
+/* ── Grain overlay — sits above nebula, below content ── */
 body::before {
   content: '';
   position: fixed;
@@ -91,6 +100,7 @@ body::before {
   text-decoration: none;
   transition: top 0.1s;
 }
+
 .skip-link:focus {
   top: 1rem;
 }

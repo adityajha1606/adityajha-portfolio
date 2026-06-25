@@ -3,8 +3,6 @@ import { ContactForm } from '@/components/contact/ContactForm';
 import { ExternalLink } from '@/components/ui/ExternalLink';
 import { siteConfig } from '@/data/site';
 
-const CAL_URL = 'https://cal.com/your-username/30min';
-
 export default function ContactPage() {
   return (
     <SectionWrapper id="contact">
@@ -27,7 +25,7 @@ export default function ContactPage() {
               Or book a call:
             </span>
             <ExternalLink
-              href={CAL_URL}
+              href="https://cal.com/aditya-jha/30min"
               className="font-body text-sm text-gold hover:underline transition-colors duration-150"
             >
               30 min →

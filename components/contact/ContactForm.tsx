@@ -60,9 +60,13 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <p className="font-body text-ink-primary">
-        Received. I&apos;ll respond within 48 hours.
-      </p>
+      <pre className="font-mono text-sm leading-relaxed">
+        <span className="text-ink-muted">{'- status: unreached'}</span>
+        {'\n'}
+        <span className="text-gold">{'+ status: message received'}</span>
+        {'\n'}
+        <span className="text-gold">{'+ response_time: < 24h'}</span>
+      </pre>
     );
   }
 
