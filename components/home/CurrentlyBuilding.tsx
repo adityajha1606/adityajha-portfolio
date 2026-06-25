@@ -4,10 +4,6 @@ import { Card } from '@/components/ui/Card'
 export function CurrentlyBuilding() {
   return (
     <Card hover>
-      <p className="font-body font-semibold text-gold text-sm uppercase tracking-widest mb-3">
-        Currently Building
-      </p>
-
       <h3 className="font-body font-semibold text-ink-primary text-lg mb-2 leading-snug">
         NMDC Event Management &amp; Reporting System
       </h3>
@@ -18,10 +14,10 @@ export function CurrentlyBuilding() {
       </p>
 
       <Link
-        href="/now"
-        className="font-body text-sm text-gold hover:underline transition-colors duration-150"
+        href="/work?status=wip"
+        className="inline-block font-body text-xs text-gold tracking-wide hover:text-gold-bright transition-colors duration-150"
       >
-        Follow progress on /now →
+        View ongoing projects →
       </Link>
     </Card>
   )

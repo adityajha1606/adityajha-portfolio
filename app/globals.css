@@ -26,7 +26,6 @@
 
   --container-content: 70rem;
 
-  /* ↓ Group 1: reduced from 4rem / 6rem */
   --spacing-section-mobile: 3rem;
   --spacing-section-desktop: 5rem;
 }
@@ -53,7 +52,6 @@ body {
   background-color: var(--color-obsidian);
   color: var(--color-ink-primary);
   font-family: var(--font-body);
-  /* ↓ Group 1: fluid type scale instead of flat 1rem */
   font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.7;
 }
@@ -93,27 +91,37 @@ body::before {
   text-decoration: none;
   transition: top 0.1s;
 }
-
 .skip-link:focus {
   top: 1rem;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* ── Scrollbar (static rules – preserved by @layer base) ── */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-obsidian);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-obsidian-border);
+    transition: background 0.4s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dim);
+  }
+
+  /* Firefox baseline */
+  html {
+    scrollbar-color: var(--color-obsidian-border) var(--color-obsidian);
+    scrollbar-width: thin;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-obsidian);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-obsidian-border);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-dim);
-}
-
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

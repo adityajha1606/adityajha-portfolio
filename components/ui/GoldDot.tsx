@@ -1,7 +1,20 @@
-export function GoldDot({ className }: { className?: string }) {
+import { cn } from '@/lib/utils'
+
+export function GoldDot({
+  className,
+  linkMode = false,
+}: {
+  className?: string
+  linkMode?: boolean
+}) {
   return (
     <span
-      className={`inline-block h-1 w-1 bg-gold flex-shrink-0 ${className ?? ''}`}
+      className={cn(
+        'inline-block bg-gold flex-shrink-0 transition-transform duration-300',
+        linkMode ? 'h-2 w-2' : 'h-1 w-1',
+        linkMode && 'group-hover:rotate-45',
+        className
+      )}
       aria-hidden="true"
     />
   )

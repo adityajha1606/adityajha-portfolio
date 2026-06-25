@@ -2,15 +2,18 @@ import Link from 'next/link'
 import { featuredProjects } from '@/data/projects'
 import { ProjectCard } from '@/components/work/ProjectCard'
 import { GoldRule } from '@/components/ui/GoldRule'
+import { GoldDot } from '@/components/ui/GoldDot'
 
 const DISPLAY_PROJECTS = featuredProjects.slice(0, 2)
 
 export function FeaturedWork() {
   return (
     <div>
-      <h2 className="font-display font-semibold text-ink-bright text-2xl md:text-3xl mb-8 leading-[1.1]">
-        Selected Work
-      </h2>
+      <Link href="/work" className="group inline-block no-underline mb-8">
+        <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold group-hover:text-gold-bright transition-colors duration-150 flex items-center gap-2 border-b border-gold/30 group-hover:border-gold pb-0.5">
+          Selected Work <GoldDot linkMode />
+        </h2>
+      </Link>
 
       <div className="flex flex-col">
         {DISPLAY_PROJECTS.map((project, index) => (
