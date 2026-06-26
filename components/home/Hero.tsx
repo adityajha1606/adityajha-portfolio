@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col px-6 md:px-12 lg:px-16"
-      aria-label="Hero"
+      aria-label="Aditya Jha — Hero"
     >
       <div className="flex-1 flex flex-col justify-center w-full max-w-content pt-24 pb-20">
         <Greeting />
@@ -49,7 +49,7 @@ export function Hero() {
           )}
         </h1>
 
-        {/* Yellow rule — thicker, three‑quarter width */}
+        {/* Yellow rule */}
         <motion.div
           className="h-[4px] bg-strike w-3/4 mt-4 mb-6"
           style={{ transformOrigin: 'left center' }}
@@ -91,7 +91,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="w-full flex flex-col items-center gap-1 pb-8 text-ink/30"
+        className="w-full flex flex-col items-center gap-1 pb-8 text-ink/50"
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={line2Complete ? { opacity: 1 } : { opacity: 0 }}
