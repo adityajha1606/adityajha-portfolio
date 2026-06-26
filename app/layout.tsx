@@ -102,9 +102,6 @@ export default function RootLayout({
       className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
     >
       <body>
-        {/* STATIC INK CURTAIN — visible immediately, before any JS */}
-        <div id="wipe-curtain" className="fixed inset-0 z-[10001] bg-ink" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
