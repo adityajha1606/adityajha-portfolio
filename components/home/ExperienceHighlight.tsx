@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/Card'
 export function ExperienceHighlight() {
   return (
     <Link href="/experience" className="block group">
-      <Card variant="default" className="p-8 md:p-10">
+      <Card variant="purple" className="p-8 md:p-10">
         <h3 className="font-display font-extrabold text-2xl md:text-3xl text-ink mb-2">
           Software Development Intern
         </h3>

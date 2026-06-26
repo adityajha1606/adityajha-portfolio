@@ -4,9 +4,13 @@
   /* ── HARD COPY v2 Palette ── */
   --color-bone: #f5f0e8;
   --color-ink: #0d0d0d;
-  --color-strike: #e8c547; /* yellow – Full‑Stack / Tools */
-  --color-fault: #d94f3d; /* red – standout tags, emphasis */
-  --color-teal: #2e6b5e; /* teal – ML / Technical */
+  --color-strike: #e8c547;
+  --color-fault: #d94f3d;
+  --color-teal: #2e6b5e;
+  --color-purple: #7b4fd4;
+  --color-coral: #f4725b;
+  --color-blue: #1e90ff;
+  --color-magenta: #d9469a;
 
   /* ── Typography ── */
   --font-display: 'Syne', sans-serif;
@@ -135,6 +139,30 @@ body {
     background-color: Mark;
   }
 
+  .text-purple,
+  .bg-purple {
+    color: Highlight;
+    background-color: Highlight;
+  }
+
+  .text-coral,
+  .bg-coral {
+    color: Mark;
+    background-color: Mark;
+  }
+
+  .text-blue,
+  .bg-blue {
+    color: LinkText;
+    background-color: LinkText;
+  }
+
+  .text-magenta,
+  .bg-magenta {
+    color: Mark;
+    background-color: Mark;
+  }
+
   .text-ink,
   .bg-ink {
     color: CanvasText;
@@ -150,7 +178,11 @@ body {
   .border-ink,
   .border-strike,
   .border-teal,
-  .border-fault {
+  .border-fault,
+  .border-purple,
+  .border-coral,
+  .border-blue,
+  .border-magenta {
     border-color: ButtonBorder;
   }
 }

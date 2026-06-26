@@ -60,7 +60,7 @@ export function Navbar() {
                       'inline-flex items-center font-body font-medium text-sm uppercase tracking-wide px-3 py-2 transition-transform duration-150',
                       'hover:translate-x-[4px] hover:translate-y-[4px]',
                       active
-                        ? 'bg-ink text-bone border-b-[3px] border-yellow'
+                        ? 'bg-ink text-bone border-b-[3px] border-fault'
                         : 'text-ink border-b-[3px] border-transparent'
                     )}
                   >

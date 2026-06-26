@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/Card'
 export function BeyondCodePreview() {
   return (
     <Link href="/beyond-code" className="block group">
-      <Card variant="default" className="p-8">
+      <Card variant="magenta" className="p-8">
         <h2 className="font-display font-extrabold text-3xl md:text-4xl text-ink mb-6">
           When I&rsquo;m not building
         </h2>

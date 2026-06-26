@@ -85,11 +85,12 @@ export function Hero() {
           <Button variant="primary" href="/work">
             View my work
           </Button>
+          {/* ── Red‑fill resume button ── */}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline transition-all duration-150 border-ink bg-bone text-ink shadow-[4px_4px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline transition-all duration-150 border-ink bg-fault text-bone shadow-[4px_4px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]"
           >
             Download resume
           </a>

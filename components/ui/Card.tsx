@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-type CardVariant = 'teal' | 'yellow' | 'ink' | 'default'
+type CardVariant = 'teal' | 'yellow' | 'ink' | 'default' | 'purple' | 'coral' | 'blue' | 'magenta'
 
 interface CardProps {
   children: React.ReactNode
@@ -33,6 +33,26 @@ export function Card({
       accent === 'teal'
         ? 'shadow-[8px_8px_0_#2E6B5E]'
         : 'shadow-[8px_8px_0_#E8C547]',
+      'hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px]',
+    ),
+    purple: cn(
+      'bg-purple text-ink',
+      'shadow-[8px_8px_0_var(--color-ink)]',
+      'hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px]',
+    ),
+    coral: cn(
+      'bg-coral text-ink',
+      'shadow-[8px_8px_0_var(--color-ink)]',
+      'hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px]',
+    ),
+    blue: cn(
+      'bg-blue text-ink',
+      'shadow-[8px_8px_0_var(--color-ink)]',
+      'hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px]',
+    ),
+    magenta: cn(
+      'bg-magenta text-ink',
+      'shadow-[8px_8px_0_var(--color-ink)]',
       'hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px]',
     ),
     default: cn(

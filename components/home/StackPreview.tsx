@@ -23,20 +23,20 @@ const categories = [
 export function StackPreview() {
   return (
     <Link href="/stack" className="block group">
-      <Card variant="default" className="p-8">
+      <Card variant="blue" className="p-8">
         <h2 className="font-display font-extrabold text-3xl md:text-4xl text-ink mb-6">
           Stack
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map(({ label, tools }) => (
-            <div key={label} className="border-l-[3px] border-strike pl-4">
+            <div key={label} className="border-l-[3px] border-ink pl-4">
               <p className="font-body font-medium text-xs uppercase tracking-widest text-ink mb-3">
                 {label}
               </p>
               <ul className="flex flex-col gap-1.5">
                 {tools.map((tool) => (
-                  <li key={tool} className="font-mono text-xs font-bold">
+                  <li key={tool} className="font-mono text-xs font-bold text-ink">
                     {tool}
                   </li>
                 ))}

@@ -13,7 +13,7 @@ export function LatestWritingPreview() {
         href="/writing/football-player-impact-rating-system"
         className="block group"
       >
-        <Card variant="default" className="p-8">
+        <Card variant="coral" className="p-8">
           <p className="font-display font-extrabold text-xl md:text-2xl mb-3 leading-snug">
             Building a Football Player Impact Rating System with XGBoost
           </p>
