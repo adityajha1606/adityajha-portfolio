@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google'
+import { headers } from 'next/headers'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Sidebar } from '@/components/layout/Sidebar'
-import { PageWipe } from '@/components/ui/PageWipe'
 import { ScrollbarGlow } from '@/components/ui/ScrollbarGlow'
 
 const syne = Syne({
@@ -91,11 +91,14 @@ const personJsonLd = {
   ],
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const nonce = headersList.get('x-nonce') ?? ''
+
   return (
     <html
       lang="en"
@@ -104,6 +107,7 @@ export default function RootLayout({
       <body>
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <a href="#main-content" className="skip-link">

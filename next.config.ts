@@ -8,6 +8,7 @@ const securityHeaders: { key: string; value: string }[] = [
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
   { key: 'X-XSS-Protection', value: '0' },
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  // CSP is now set dynamically in middleware.ts
 ]
 
 const nextConfig: NextConfig = {

@@ -1,30 +1,19 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
 export default function NotFound() {
-  const [revealed, setRevealed] = useState(false)
-
-  useEffect(() => {
-    const id = setTimeout(() => setRevealed(true), 1000)
-    return () => clearTimeout(id)
-  }, [])
-
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="flex flex-col items-center text-center gap-4">
-        <p className="font-display italic text-gold text-[clamp(18px,2.5vw,24px)] leading-relaxed max-w-md">
-          You&rsquo;ve wandered somewhere that doesn&rsquo;t exist.
+    <div className="min-h-[calc(100vh-128px)] flex items-center justify-center">
+      <div className="text-center max-w-md px-4">
+        <p className="font-display font-extrabold text-[clamp(6rem,15vw,12rem)] leading-none text-ink mb-6 md:-ml-[44px]">
+          404<span className="text-fault">.</span>
         </p>
-
-        {/* Second line always rendered; only opacity changes */}
-        <p
-          className={`font-display italic text-gold text-[clamp(14px,1.8vw,18px)] leading-relaxed max-w-md transition-opacity duration-500 ${
-            revealed ? 'opacity-80' : 'opacity-0'
-          }`}
+        <p className="font-body font-medium text-[clamp(1rem,2.5vw,1.3rem)] text-ink/70 mb-10">
+          YOU&rsquo;VE WANDERED OFF THE GRID.
+        </p>
+        <a
+          href="/"
+          className="inline-block px-9 py-3.5 bg-strike text-ink font-display font-extrabold text-sm uppercase tracking-[0.05em] no-underline border-[3px] border-ink shadow-[4px_4px_0_var(--color-ink)] hover:shadow-[2px_2px_0_var(--color-ink)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
         >
-          Or maybe it does, and I haven&rsquo;t built it yet.
-        </p>
+          RETURN &rarr;
+        </a>
       </div>
     </div>
   )
