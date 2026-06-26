@@ -5,6 +5,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { PageWipe } from '@/components/ui/PageWipe'
+import { ScrollbarGlow } from '@/components/ui/ScrollbarGlow'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#F2EDE3',
+  themeColor: '#F5F0E8',
 }
 
 const personJsonLd = {
@@ -101,7 +102,9 @@ export default function RootLayout({
       className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
     >
       <body>
-        <PageWipe />
+        {/* STATIC INK CURTAIN — visible immediately, before any JS */}
+        <div id="wipe-curtain" className="fixed inset-0 z-[10001] bg-ink" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -117,6 +120,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <ScrollbarGlow />
       </body>
     </html>
   )
