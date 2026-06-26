@@ -24,7 +24,10 @@ export function Hero() {
         <Greeting />
 
         {/* ADITYA line */}
-        <h1 className="font-display font-extrabold uppercase text-ink text-[clamp(64px,10vw,120px)] leading-[1.05]">
+        <h1
+          className="font-display font-extrabold uppercase text-ink text-[clamp(64px,10vw,120px)] leading-[1.05]"
+          aria-label="Aditya Jha"
+        >
           {prefersReducedMotion ? (
             'ADITYA'
           ) : (
@@ -36,7 +39,10 @@ export function Hero() {
         </h1>
 
         {/* JHA. line with red dot */}
-        <h1 className="font-display font-extrabold uppercase text-ink text-[clamp(64px,10vw,120px)] leading-[1.05]">
+        <h1
+          className="font-display font-extrabold uppercase text-ink text-[clamp(64px,10vw,120px)] leading-[1.05]"
+          aria-label="Aditya Jha"
+        >
           {prefersReducedMotion ? (
             'JHA<span class="text-fault">.</span>'
           ) : (
