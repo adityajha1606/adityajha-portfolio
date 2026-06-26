@@ -10,11 +10,11 @@ import { cn } from '@/lib/utils';
 const SUBJECTS = ['Collaboration', 'Hire Me', 'Just Saying Hi'] as const;
 
 const inputBase = [
-  'w-full bg-obsidian-4 border border-obsidian-border',
-  'text-ink-primary font-body px-4 py-3',
-  'placeholder:text-ink-muted',
+  'w-full bg-bone border-2 border-ink',
+  'text-ink font-body font-medium px-4 py-3',
+  'placeholder:text-ink/30',
   'outline-none transition-[border-color,box-shadow] duration-150',
-  'focus:border-gold focus:shadow-[0_0_0_3px_rgba(201,168,76,0.15)]',
+  'focus:border-strike focus:shadow-[3px_3px_0_var(--color-strike)]',
 ].join(' ');
 
 export function ContactForm() {
@@ -70,11 +70,11 @@ export function ContactForm() {
   if (submitted) {
     return (
       <pre className="font-mono text-sm leading-relaxed">
-        <span className="text-ink-muted">{'- status: unreached'}</span>
+        <span className="text-ink/50">{'- status: unreached'}</span>
         {'\n'}
-        <span className="text-gold">{'+ status: message received'}</span>
+        <span className="text-strike">{'+ status: message received'}</span>
         {'\n'}
-        <span className="text-gold">{'+ response_time: < 24h'}</span>
+        <span className="text-strike">{'+ response_time: < 24h'}</span>
       </pre>
     );
   }
@@ -98,11 +98,10 @@ export function ContactForm() {
         />
       </div>
 
-      {/* ── Name ──────────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="name"
-          className="font-body text-[13px] text-ink-secondary mb-1.5"
+          className="font-body font-medium text-xs uppercase tracking-widest text-ink mb-1.5"
         >
           Name
         </label>
@@ -116,17 +115,16 @@ export function ContactForm() {
           {...register('name')}
         />
         {errors.name && (
-          <p id="name-error" className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="name-error" className="font-mono text-[11px] font-bold text-fault mt-1" role="alert">
             {errors.name.message}
           </p>
         )}
       </div>
 
-      {/* ── Email ─────────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="email"
-          className="font-body text-[13px] text-ink-secondary mb-1.5"
+          className="font-body font-medium text-xs uppercase tracking-widest text-ink mb-1.5"
         >
           Email
         </label>
@@ -140,17 +138,16 @@ export function ContactForm() {
           {...register('email')}
         />
         {errors.email && (
-          <p id="email-error" className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="email-error" className="font-mono text-[11px] font-bold text-fault mt-1" role="alert">
             {errors.email.message}
           </p>
         )}
       </div>
 
-      {/* ── Subject ───────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="subject"
-          className="font-body text-[13px] text-ink-secondary mb-1.5"
+          className="font-body font-medium text-xs uppercase tracking-widest text-ink mb-1.5"
         >
           Subject
         </label>
@@ -170,17 +167,16 @@ export function ContactForm() {
           ))}
         </select>
         {errors.subject && (
-          <p id="subject-error" className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="subject-error" className="font-mono text-[11px] font-bold text-fault mt-1" role="alert">
             {errors.subject.message}
           </p>
         )}
       </div>
 
-      {/* ── Message ───────────────────────────────────────────────────── */}
       <div className="flex flex-col">
         <label
           htmlFor="message"
-          className="font-body text-[13px] text-ink-secondary mb-1.5"
+          className="font-body font-medium text-xs uppercase tracking-widest text-ink mb-1.5"
         >
           Message
         </label>
@@ -193,7 +189,7 @@ export function ContactForm() {
           {...register('message')}
         />
         {errors.message && (
-          <p id="message-error" className="font-body text-xs text-status-error mt-1" role="alert">
+          <p id="message-error" className="font-mono text-[11px] font-bold text-fault mt-1" role="alert">
             {errors.message.message}
           </p>
         )}
@@ -201,7 +197,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-3">
         <Button
-          variant="gold"
+          variant="primary"
           type="submit"
           disabled={isSubmitting}
           className="self-start"
@@ -210,7 +206,7 @@ export function ContactForm() {
         </Button>
 
         {serverError && (
-          <p className="font-body text-sm text-status-error" role="alert">
+          <p className="font-mono text-[11px] font-bold text-fault" role="alert">
             {serverError}
           </p>
         )}

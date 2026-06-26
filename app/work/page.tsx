@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { FilterBar } from '@/components/work/FilterBar'
@@ -27,7 +27,7 @@ function sortProjects(list: typeof projects) {
   })
 }
 
-export default function WorkPage() {
+function WorkContent() {
   const searchParams = useSearchParams()
   const initialStatus = (searchParams?.get('status') ?? 'All') as StatusLabel
 
@@ -56,9 +56,7 @@ export default function WorkPage() {
         The Work
       </h1>
 
-      {/* ── Filter row ── */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 mt-8">
-        {/* Category */}
         <div className="flex flex-col gap-1.5">
           <span className="font-mono text-sm font-bold uppercase tracking-[0.12em] text-ink">
             Category
@@ -70,7 +68,6 @@ export default function WorkPage() {
           />
         </div>
 
-        {/* Status */}
         <div className="flex flex-col gap-1.5">
           <span className="font-mono text-sm font-bold uppercase tracking-[0.12em] text-ink">
             Status
@@ -85,5 +82,13 @@ export default function WorkPage() {
 
       <ProjectList projects={filtered} />
     </SectionWrapper>
+  )
+}
+
+export default function WorkPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <WorkContent />
+    </Suspense>
   )
 }
