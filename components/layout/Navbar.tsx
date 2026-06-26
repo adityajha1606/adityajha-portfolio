@@ -45,7 +45,7 @@ export function Navbar() {
           aria-label="Aditya Jha — back to top"
           className="font-display font-extrabold text-xl text-ink no-underline uppercase"
         >
-          AJ.
+          AJ<span className="text-fault">.</span>
         </Link>
 
         <nav aria-label="Main navigation">
@@ -81,7 +81,7 @@ export function Navbar() {
           aria-label="Aditya Jha — back to top"
           className="font-display font-extrabold text-xl text-bone no-underline uppercase"
         >
-          AJ.
+          AJ<span className="text-fault">.</span>
         </Link>
 
         <button
