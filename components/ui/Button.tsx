@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-type Variant = 'gold' | 'ghost'
+type Variant = 'primary' | 'default'
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant
@@ -11,23 +11,23 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 }
 
 const base =
-  'inline-flex items-center gap-1.5 whitespace-nowrap border px-5 py-2.5 font-body text-sm font-medium tracking-[0.04em] no-underline transition-[background-color,color,border-color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-50'
+  'inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50'
 
 const variants: Record<Variant, string> = {
-  gold: cn(
-    'bg-gold border-gold text-obsidian',
-    'hover:bg-gold-bright hover:border-gold-bright hover:shadow-gold-glow',
-    'focus-visible:bg-gold-bright focus-visible:border-gold-bright'
+  primary: cn(
+    'bg-strike border-ink text-ink shadow-[4px_4px_0_var(--color-ink)]',
+    'hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]',
+    'focus-visible:translate-x-[6px] focus-visible:translate-y-[6px] focus-visible:shadow-[2px_2px_0_var(--color-ink)]',
   ),
-  ghost: cn(
-    'border-obsidian-border bg-transparent text-ink-secondary',
-    'hover:border-gold-dim hover:text-ink-primary',
-    'focus-visible:border-gold-dim focus-visible:text-ink-primary'
+  default: cn(
+    'bg-bone border-ink text-ink shadow-[4px_4px_0_var(--color-ink)]',
+    'hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]',
+    'focus-visible:translate-x-[6px] focus-visible:translate-y-[6px] focus-visible:shadow-[2px_2px_0_var(--color-ink)]',
   ),
 }
 
 export function Button({
-  variant = 'gold',
+  variant = 'primary',
   href,
   external,
   children,

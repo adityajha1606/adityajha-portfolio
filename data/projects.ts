@@ -31,6 +31,8 @@ export interface Project {
   mlMetrics?: MlMetrics;
   writingSlug?: string;
   deadline?: string;
+  accent?: 'teal' | 'yellow';
+  highlightTags?: string[];
 }
 
 export const projects: Project[] = [
@@ -57,6 +59,8 @@ export const projects: Project[] = [
       comparison: 'Outperformed Random Forest baseline',
     },
     writingSlug: 'football-player-impact-rating-system',
+    accent: 'teal',
+    highlightTags: ['XGBoost'],
   },
   {
     id: 'nmdc-event-management',
@@ -80,10 +84,12 @@ export const projects: Project[] = [
     ],
     featured: true,
     year: 2026,
-    status: 'wip',
+    status: 'live',
     role: 'sole-author',
     metrics: 'Production IIS · Government client',
     deadline: '2026-07-15',
+    accent: 'yellow',
+    highlightTags: ['SignalR'],
   },
   {
     id: 'stock-prediction-classifier',
@@ -101,6 +107,8 @@ export const projects: Project[] = [
     status: 'wip',
     role: 'sole-author',
     deadline: '2026-07-31',
+    accent: 'teal',
+    highlightTags: ['Feature Engineering'],
   },
   {
     id: 'meterdown',
@@ -117,8 +125,9 @@ export const projects: Project[] = [
     year: 2025,
     status: 'live',
     role: 'contributor',
-    myContribution:
-      'Built the invoice generation module and SQLite schema.',
+    myContribution: 'Built the invoice generation module and SQLite schema.',
+    accent: 'yellow',
+    highlightTags: ['Java Swing'],
   },
   {
     id: 'openiris',
@@ -135,8 +144,9 @@ export const projects: Project[] = [
     year: 2025,
     status: 'live',
     role: 'contributor',
-    myContribution:
-      'Implemented the screen reader compatibility layer.',
+    myContribution: 'Implemented the screen reader compatibility layer.',
+    accent: 'yellow',
+    highlightTags: ['Chrome Extension', 'Manifest V3'],
   },
 ];
 

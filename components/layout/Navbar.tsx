@@ -3,8 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
@@ -17,17 +15,10 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname()
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  useEffect(() => setOpen(false), [pathname])
 
-  // Close on Escape (WCAG dialog requirement)
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -37,31 +28,28 @@ export function Navbar() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  useEffect(() => setOpen(false), [pathname])
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0 })
+    }
+  }
 
   return (
     <>
-      <header
-        className={cn(
-          'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300',
-          scrolled
-            ? 'border-obsidian-border bg-obsidian-2/90 backdrop-blur-md'
-            : 'border-transparent bg-transparent'
-        )}
-      >
-        <nav
-          aria-label="Main navigation"
-          className="mx-auto flex h-14 max-w-content items-center justify-between px-8"
+      {/* ── Desktop Navbar ── */}
+      <header className="hidden md:flex items-center justify-between h-16 px-8 bg-bone border-b-[3px] border-ink shadow-[8px_8px_0_var(--color-ink)] sticky top-0 z-40">
+        <Link
+          href="/"
+          onClick={handleLogoClick}
+          aria-label="Aditya Jha — back to top"
+          className="font-display font-extrabold text-xl text-ink no-underline uppercase"
         >
-          <Link
-            href="/"
-            aria-label="Aditya Jha — home"
-            className="font-display text-xl font-bold tracking-[0.02em] text-gold no-underline"
-          >
-            AJ
-          </Link>
+          AJ.
+        </Link>
 
-          <ul className="hidden gap-8 md:flex">
+        <nav aria-label="Main navigation">
+          <ul className="flex gap-2">
             {links.map(({ href, label }) => {
               const active = pathname === href || pathname.startsWith(href + '/')
               return (
@@ -69,10 +57,11 @@ export function Navbar() {
                   <Link
                     href={href}
                     className={cn(
-                      'border-b pb-0.5 font-body text-[13px] font-medium tracking-[0.03em] no-underline transition-colors duration-150',
+                      'inline-flex items-center font-body font-medium text-sm uppercase tracking-wide px-3 py-2 transition-transform duration-150',
+                      'hover:translate-x-[4px] hover:translate-y-[4px]',
                       active
-                        ? 'border-gold text-gold'
-                        : 'border-transparent text-ink-secondary hover:text-gold'
+                        ? 'bg-ink text-bone border-b-[3px] border-yellow'
+                        : 'text-ink border-b-[3px] border-transparent'
                     )}
                   >
                     {label}
@@ -81,55 +70,63 @@ export function Navbar() {
               )
             })}
           </ul>
-
-          <button
-            onClick={() => setOpen((o) => !o)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            className="flex h-11 w-11 items-center justify-center text-ink-secondary md:hidden"
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </nav>
       </header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            role="dialog"
-            aria-label="Mobile navigation"
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-obsidian-2"
-          >
-            {links.map(({ href, label }, i) => {
-              const active = pathname === href
-              return (
-                <motion.div
-                  key={href}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{ duration: 0.3, delay: i * 0.06 }}
-                >
-                  <Link
-                    href={href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      'font-display text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-[0.05em] no-underline',
-                      active ? 'text-gold' : 'text-ink-secondary'
-                    )}
-                  >
-                    {label}
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ── Mobile Navbar ── */}
+      <header className="flex md:hidden items-center justify-between h-14 px-4 bg-ink border-b-[3px] border-yellow sticky top-0 z-40">
+        <Link
+          href="/"
+          onClick={handleLogoClick}
+          aria-label="Aditya Jha — back to top"
+          className="font-display font-extrabold text-xl text-bone no-underline uppercase"
+        >
+          AJ.
+        </Link>
+
+        <button
+          onClick={() => setOpen(o => !o)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          className="flex h-11 w-11 items-center justify-center text-bone"
+        >
+          {open ? (
+            <span className="text-2xl leading-none">&times;</span>
+          ) : (
+            <span className="flex flex-col gap-1.5">
+              <span className="block h-0.5 w-5 bg-bone" />
+              <span className="block h-0.5 w-5 bg-bone" />
+              <span className="block h-0.5 w-5 bg-bone" />
+            </span>
+          )}
+        </button>
+      </header>
+
+      {/* ── Mobile Menu Overlay ── */}
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-10 bg-ink"
+          role="dialog"
+          aria-label="Mobile navigation"
+        >
+          {links.map(({ href, label }) => {
+            const active = pathname === href
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  'font-display font-extrabold text-[clamp(1.75rem,6vw,2.5rem)] uppercase text-bone no-underline transition-transform duration-150',
+                  'hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[6px_6px_0_var(--color-yellow)]',
+                  active && 'border-b-[3px] border-yellow'
+                )}
+              >
+                {label}
+              </Link>
+            )
+          })}
+        </div>
+      )}
     </>
   )
 }

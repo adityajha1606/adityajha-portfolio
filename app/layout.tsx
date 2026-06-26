@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
+import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { ScrollbarGlow } from '@/components/ui/ScrollbarGlow'
+import { Sidebar } from '@/components/layout/Sidebar'
+import { PageWipe } from '@/components/ui/PageWipe'
 
-const cormorant = Cormorant_Garamond({
+const syne = Syne({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['800'],
   variable: '--font-display',
   display: 'swap',
 })
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-body',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#08080A',
+  themeColor: '#F2EDE3',
 }
 
 const personJsonLd = {
@@ -98,17 +98,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}
+      className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
     >
-      {/*
-        Designed & built by Aditya Jha
-        adityajha1606.github.io
-
-        If you're reading this, you're the kind of person I want to work with.
-        hello@adityajha1606.github.io
-      */}
-
       <body>
+        <PageWipe />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -116,12 +109,14 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Navbar />
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <ScrollbarGlow />
+        <Sidebar />
+        <div className="md:ml-[44px]">
+          <Navbar />
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

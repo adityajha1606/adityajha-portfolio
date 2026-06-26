@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Card } from '@/components/ui/Card'
-import { GoldDot } from '@/components/ui/GoldDot'
 import { ExternalLink } from '@/components/ui/ExternalLink'
 
 const credentials = [
@@ -12,7 +11,7 @@ const credentials = [
   },
   {
     label: 'Coding Profiles',
-    description: 'LeetCode · Github· Codeforces · CodeChef · HackerRank',
+    description: 'LeetCode · GitHub · Codeforces · CodeChef · HackerRank',
     href: '/coding-profiles',
     external: false,
   },
@@ -37,14 +36,17 @@ function CredentialCard({
   external,
 }: (typeof credentials)[number]) {
   const content = (
-    <Card hover className="p-6 flex flex-col gap-3 h-full">
-      <p className="font-body text-xs uppercase tracking-widest text-gold">
-        {label}
-      </p>
-      <p className="font-body text-ink-secondary text-sm leading-relaxed flex-1 prose">
+    <Card variant="default" className="p-6 flex flex-col gap-3 h-full border-t-[4px] border-t-ink">
+      <div className="flex items-center gap-2">
+        <span className="text-ink font-mono text-[11px] font-bold">✦</span>
+        <p className="font-display font-extrabold text-sm uppercase tracking-widest text-ink">
+          {label}
+        </p>
+      </div>
+      <p className="font-body font-medium text-sm leading-relaxed flex-1 text-ink/80">
         {description}
       </p>
-      <span className="inline-block font-body text-xs text-gold tracking-wide group-hover:text-gold-bright transition-colors duration-150">
+      <span className="font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-ink pb-0.5 group-hover:gap-2 transition-all">
         View →
       </span>
     </Card>
@@ -68,8 +70,8 @@ function CredentialCard({
 export function CredentialsGrid() {
   return (
     <div>
-      <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold mb-6 flex items-center gap-2">
-        Credentials <GoldDot />
+      <h2 className="font-display font-extrabold text-3xl md:text-4xl text-ink mb-6">
+        Credentials
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { GoldDot } from '@/components/ui/GoldDot'
 
 export function Greeting() {
   const [visible, setVisible] = useState(true)
@@ -26,13 +25,12 @@ export function Greeting() {
 
   return (
     <motion.p
-      className="font-display italic text-ink-secondary text-base mb-4 flex items-center gap-2"
+      className="font-mono text-[11px] font-bold text-ink/50 mb-2 tracking-wider"
       initial={{ opacity: 0 }}
       animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
       aria-hidden={!visible}
     >
-      <GoldDot />
       {greeting}
     </motion.p>
   )

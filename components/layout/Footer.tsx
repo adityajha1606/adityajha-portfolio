@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { ExternalLink } from '@/components/ui/ExternalLink'
+import { siteConfig } from '@/data/site'
 
 const socials = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/jhaadi/' },
@@ -36,11 +38,7 @@ function ISTClock() {
   }, [])
 
   return (
-    <span
-      className="font-mono text-xs text-ink-muted"
-      title="Current time in IST"
-      aria-hidden="true"
-    >
+    <span className="font-mono text-xs text-bone" aria-hidden="true">
       {time} IST
     </span>
   )
@@ -48,28 +46,49 @@ function ISTClock() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-obsidian-border">
-      <div className="mx-auto flex max-w-content flex-col gap-5 px-8 py-8">
-        <div className="flex flex-wrap gap-x-6 gap-y-4">
-          {socials.map(({ label, href }) => (
-            <ExternalLink
-              key={label}
-              href={href}
-              className="inline-flex items-center min-h-[24px] text-[13px] font-normal text-ink-secondary no-underline transition-colors duration-150 hover:text-gold focus-visible:text-gold"
-            >
-              {label}
-            </ExternalLink>
-          ))}
+    <footer className="mt-24 border-t-[3px] border-ink bg-ink">
+      <div className="mx-auto max-w-content grid grid-cols-1 md:grid-cols-2 gap-0 px-8 py-8 relative">
+        {/* ── Vertical divider – even spacing ── */}
+        <div className="absolute left-1/2 top-4 bottom-4 w-[3px] bg-bone hidden md:block" />
+
+        {/* ── Left column ── */}
+        <div className="flex flex-col gap-5 pr-6">
+          {/* Email link — red, larger, leads to contact */}
+          <Link
+            href="/contact"
+            className="font-body font-semibold text-lg text-fault hover:text-bone transition-colors duration-150 no-underline"
+          >
+            {siteConfig.email}
+          </Link>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            {socials.map(({ label, href }) => (
+              <ExternalLink
+                key={label}
+                href={href}
+                className="text-[13px] font-body font-medium text-bone no-underline uppercase tracking-wide transition-colors duration-150 hover:text-strike focus-visible:text-strike"
+              >
+                {label}
+              </ExternalLink>
+            ))}
+          </div>
+          <div className="flex items-center gap-4 text-xs text-bone opacity-60">
+            <span>© 2026 Aditya Jha</span>
+            <span className="font-mono">Last refined: June 2026</span>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-xs text-ink-muted">
-            © 2026 Aditya Jha
+        {/* ── Right column – //hand-made in red/bone, clock & stamp ── */}
+        <div className="flex flex-col items-end justify-between gap-6 pl-6">
+          <span className="font-display font-extrabold text-[40px] leading-none whitespace-nowrap">
+            <span className="text-bone">//hand-</span><span className="text-fault">made</span>
           </span>
-          <div className="flex flex-col items-end gap-1">
+
+          <div className="flex flex-col items-end gap-4">
             <ISTClock />
-            <span className="font-mono text-xs text-ink-muted">
-              Last refined: June 2026
+            {/* RED stamp */}
+            <span className="inline-block border-[3px] border-fault px-3 py-1 font-mono text-xs uppercase text-fault">
+              Received 26 Jun 2026
             </span>
           </div>
         </div>

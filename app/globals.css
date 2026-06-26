@@ -1,32 +1,29 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-obsidian: #08080a;
-  --color-obsidian-2: #0f0f12;
-  --color-obsidian-3: #161619;
-  --color-obsidian-4: #1e1e22;
-  --color-obsidian-border: #2a2a2f;
-  --color-ink-bright: #f0ede8;
-  --color-ink-primary: #c8c4bc;
-  --color-ink-secondary: #8a8680;
-  --color-ink-muted: #6b6762; /* ← Fix: lightened for AA contrast */
-  --color-gold: #c9a84c;
-  --color-gold-bright: #e2be6a;
-  --color-gold-dim: #8a6e2e;
-  --color-status-live: #4a8c5c;
-  --color-status-wip: #8c6a4a;
-  --color-status-error: #8c3a3a;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* ── HARD COPY v2 Palette ── */
+  --color-bone: #f5f0e8;
+  --color-ink: #0d0d0d;
+  --color-strike: #e8c547; /* yellow – Full‑Stack / Tools */
+  --color-fault: #d94f3d; /* red – standout tags, emphasis */
+  --color-teal: #2e6b5e; /* teal – ML / Technical */
+
+  /* ── Typography ── */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* ── Layout ── */
   --container-content: 70rem;
   --spacing-section-mobile: 3rem;
   --spacing-section-desktop: 5rem;
 }
 
 :root {
-  --shadow-gold-glow: 0 0 20px
-    color-mix(in srgb, var(--color-gold) 12%, transparent);
+  /* hard shadow tokens */
+  --shadow-rest: 8px 8px 0 var(--color-ink);
+  --shadow-press: 2px 2px 0 var(--color-ink);
+  --shadow-small: 4px 4px 0 var(--color-ink);
 }
 
 *,
@@ -43,141 +40,117 @@ html {
 }
 
 body {
-  background-color: #000;
-  color: var(--color-ink-primary);
+  background-color: var(--color-bone);
+  color: var(--color-ink);
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.7;
 }
 
-/* ── Ambient gold nebula ── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(
-    ellipse at 30% 20%,
-    color-mix(in srgb, var(--color-gold) 8%, transparent),
-    transparent 70%
-  );
-}
-
-/* ── Grain overlay ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-}
-
-::selection {
-  background-color: var(--color-gold);
-  color: var(--color-obsidian);
-}
-
+/* ── Focus ring ── */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 3px solid var(--color-ink);
   outline-offset: 3px;
 }
 
+/* ── Skip link ── */
 .skip-link {
   position: absolute;
   top: -100%;
   left: 1rem;
   z-index: 10000;
-  background: var(--color-gold);
-  color: var(--color-obsidian);
+  background: var(--color-strike);
+  color: var(--color-ink);
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
   transition: top 0.1s;
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-small);
 }
 .skip-link:focus {
   top: 1rem;
 }
 
-/* ── Scrollbar ── */
+/* ── Scrollbar (ink on bone) ── */
 @layer base {
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-obsidian);
+    background: var(--color-bone);
+    border-left: 2px solid var(--color-ink);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-obsidian-border);
-    transition: background 0.4s ease;
+    background: var(--color-ink);
+    border: 2px solid var(--color-bone);
+    transition: background 0.2s;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gold-dim);
+    background: var(--color-strike);
   }
   html {
-    scrollbar-color: var(--color-obsidian-border) var(--color-obsidian);
+    scrollbar-color: var(--color-ink) var(--color-bone);
     scrollbar-width: thin;
   }
 
-  /* Keyframes for the hero subtitle fade‑in (LCP paint fix) */
-  @keyframes fadeInRole {
-    to {
-      opacity: 1;
+  /* ── Prose line‑length cap ── */
+  .prose {
+    max-width: 75ch;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
     }
   }
 }
 
-/* ── Prose line‑length cap ── */
-.prose {
-  max-width: 75ch;
-}
-
-/* ── Forced‑colors mode ── */
+/* ── Forced-colors mode ── */
 @media (forced-colors: active) {
   body {
     background-color: Canvas;
     color: CanvasText;
   }
 
-  .text-gold,
-  .text-gold-bright,
-  .text-gold-dim {
+  .text-strike,
+  .bg-strike {
     color: Highlight;
-  }
-
-  .bg-gold,
-  .bg-gold-bright {
     background-color: Highlight;
   }
 
-  .border-gold,
-  .border-gold-dim {
-    border-color: Highlight;
+  .text-teal,
+  .bg-teal {
+    color: LinkText;
+    background-color: LinkText;
   }
 
-  .text-ink-bright,
-  .text-ink-primary,
-  .text-ink-secondary {
+  .text-fault,
+  .bg-fault {
+    color: Mark;
+    background-color: Mark;
+  }
+
+  .text-ink,
+  .bg-ink {
     color: CanvasText;
+    background-color: CanvasText;
   }
 
-  .text-ink-muted {
-    color: GrayText;
-  }
-
-  .bg-obsidian,
-  .bg-obsidian-2,
-  .bg-obsidian-3,
-  .bg-obsidian-4 {
+  .text-bone,
+  .bg-bone {
+    color: Canvas;
     background-color: Canvas;
   }
 
-  .border-obsidian-border {
+  .border-ink,
+  .border-strike,
+  .border-teal,
+  .border-fault {
     border-color: ButtonBorder;
   }
 }

@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 import { Card } from '@/components/ui/Card'
-import { Badge } from '@/components/ui/Badge'
 import { Tag } from '@/components/ui/Tag'
 import { ExternalLink } from '@/components/ui/ExternalLink'
 import type { Project } from '@/data/projects'
@@ -24,48 +22,52 @@ function padOrdinal(n: number): string {
 
 export function ProjectCard({ project, featured = false, ordinal }: ProjectCardProps) {
   const categoryLabel = CATEGORY_LABELS[project.category] ?? project.category
-  const statusVariant = project.status === 'live' ? 'live' : project.status === 'wip' ? 'wip' : 'default'
+  const isWip = project.status === 'wip'
+
+  const variant: 'teal' | 'yellow' | 'ink' | 'default' = isWip
+    ? 'ink'
+    : project.accent === 'teal'
+      ? 'teal'
+      : project.accent === 'yellow'
+        ? 'yellow'
+        : 'default'
 
   return (
-    <Card
-      hover
-      className={cn(
-        featured && 'border-l-4 border-l-gold pl-5'
-      )}
-    >
+    <Card variant={variant} accent={project.accent}>
       <div className="flex items-center gap-3 mb-4">
         {ordinal !== undefined && (
-          <span className="font-mono text-xs text-ink-muted select-none">
+          <span className="font-mono text-[11px] font-bold opacity-60 select-none uppercase">
             {padOrdinal(ordinal)}
           </span>
         )}
-        <Badge variant="default">{categoryLabel}</Badge>
-        <Badge variant={statusVariant}>
+
+        <span className="font-mono text-[11px] font-bold uppercase tracking-widest border-2 px-2 py-0.5">
+          {categoryLabel}
+        </span>
+        <span className="font-mono text-[11px] font-bold uppercase tracking-widest border-2 px-2 py-0.5">
           {project.status === 'live' ? 'Live' : project.status === 'wip' ? 'WIP' : project.status}
-        </Badge>
+        </span>
+
         {project.role === 'sole-author' && (
-          <span
-            className={cn(
-              'inline-flex items-center font-mono text-[11px] leading-none',
-              'text-gold-dim border border-gold-dim px-2 py-0.5 ml-auto'
-            )}
-          >
+          <span className="font-mono text-[11px] font-bold uppercase tracking-widest border-2 border-ink text-ink px-2 py-0.5 ml-auto">
             Sole Author
           </span>
         )}
       </div>
 
-      <h3 className="font-body font-semibold text-[clamp(16px,2vw,20px)] text-ink-primary mb-2 leading-snug">
+      <h3 className="font-display font-extrabold text-xl md:text-2xl mb-2 leading-snug">
         {project.title}
       </h3>
 
-      <p className="font-body font-normal text-sm text-ink-secondary leading-relaxed mb-4">
+      <p className="font-body font-medium text-sm leading-relaxed mb-4 opacity-80">
         {project.shortDescription}
       </p>
 
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <Tag key={tag} red={project.highlightTags?.includes(tag)}>
+            {tag}
+          </Tag>
         ))}
       </div>
 
@@ -73,7 +75,7 @@ export function ProjectCard({ project, featured = false, ordinal }: ProjectCardP
         {project.liveUrl && (
           <ExternalLink
             href={project.liveUrl}
-            className="font-mono text-[12px] text-ink-secondary hover:text-gold transition-colors duration-150"
+            className="font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-current hover:gap-2 transition-all"
           >
             Live ↗
           </ExternalLink>
@@ -81,7 +83,7 @@ export function ProjectCard({ project, featured = false, ordinal }: ProjectCardP
         {project.repoUrl && (
           <ExternalLink
             href={project.repoUrl}
-            className="font-mono text-[12px] text-ink-secondary hover:text-gold transition-colors duration-150"
+            className="font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-current hover:gap-2 transition-all"
           >
             Code ↗
           </ExternalLink>
@@ -89,7 +91,7 @@ export function ProjectCard({ project, featured = false, ordinal }: ProjectCardP
         {(project.liveUrl ?? project.repoUrl) && (
           <Link
             href={project.liveUrl ?? project.repoUrl!}
-            className="ml-auto font-body text-sm text-gold hover:underline transition-colors duration-150"
+            className="ml-auto font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-current hover:gap-2 transition-all"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -99,7 +101,7 @@ export function ProjectCard({ project, featured = false, ordinal }: ProjectCardP
       </div>
 
       {project.metrics && (
-        <p className="font-mono text-[11px] text-ink-muted mt-4 pt-4 border-t border-obsidian-border">
+        <p className="font-mono text-[11px] font-bold opacity-50 mt-4 pt-4 border-t-2 border-current uppercase">
           {project.metrics}
         </p>
       )}

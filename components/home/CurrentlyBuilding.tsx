@@ -1,24 +1,32 @@
 import Link from 'next/link'
 import { Card } from '@/components/ui/Card'
+import { ClickableHeading } from '@/components/ui/ClickableHeading'
 
 export function CurrentlyBuilding() {
   return (
-    <Card hover>
-      <h3 className="font-body font-semibold text-ink-primary text-lg mb-2 leading-snug">
-        NMDC Event Management &amp; Reporting System
-      </h3>
+    <div>
+      <ClickableHeading href="/work?status=wip" className="mb-6">
+        Currently Building
+      </ClickableHeading>
 
-      <p className="font-body font-normal text-sm text-ink-secondary leading-relaxed mb-5">
-        Building enterprise event management and reporting software solo for NMDC
-        Limited — India&apos;s largest iron ore producer — on a production IIS deployment.
-      </p>
+      <Link href="/work?status=wip" className="block group">
+        <Card variant="ink" accent="yellow" className="p-8">
+          <h3 className="font-display font-extrabold text-xl md:text-2xl mb-2 leading-snug">
+            HARD COPY v2 &mdash; Neobrutalist Portfolio
+          </h3>
 
-      <Link
-        href="/work?status=wip"
-        className="inline-flex items-center min-h-[24px] font-body text-xs text-gold tracking-wide hover:text-gold-bright transition-colors duration-150"
-      >
-        View ongoing projects →
+          <p className="font-body font-medium text-sm leading-relaxed mb-5">
+            Designing and engineering a neobrutalist developer portfolio
+            from the ground up — the site you&rsquo;re looking at right now.
+            Built with Next.js, TypeScript, Tailwind CSS, and a lot of
+            deliberate decisions.
+          </p>
+
+          <span className="inline-block font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-bone group-hover:gap-2 transition-all">
+            View ongoing projects →
+          </span>
+        </Card>
       </Link>
-    </Card>
+    </div>
   )
 }

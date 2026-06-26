@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Hero } from '@/components/home/Hero'
 import { FeaturedWork } from '@/components/home/FeaturedWork'
 import { ExperienceHighlight } from '@/components/home/ExperienceHighlight'
@@ -8,33 +7,33 @@ import { CurrentlyBuilding } from '@/components/home/CurrentlyBuilding'
 import { LatestWritingPreview } from '@/components/home/LatestWritingPreview'
 import { BeyondCodePreview } from '@/components/home/BeyondCodePreview'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { GoldRule } from '@/components/ui/GoldRule'
-import { GoldDot } from '@/components/ui/GoldDot'
+import { SectionRule } from '@/components/ui/SectionRule'
+import { ClickableHeading } from '@/components/ui/ClickableHeading'
+import { Marquee } from '@/components/ui/Marquee'
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
 
       <SectionWrapper id="selected-work">
         <FeaturedWork />
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="experience">
-        <Link href="/experience" className="group inline-block no-underline mb-6">
-          <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold group-hover:text-gold-bright transition-colors duration-150 flex items-center gap-2 border-b border-gold/30 group-hover:border-gold pb-0.5">
-            Experience <GoldDot linkMode />
-          </h2>
-        </Link>
+        <ClickableHeading href="/experience" className="mb-6">
+          Experience
+        </ClickableHeading>
         <ExperienceHighlight />
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="credentials">
@@ -42,7 +41,7 @@ export default function HomePage() {
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="stack-preview">
@@ -50,20 +49,15 @@ export default function HomePage() {
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="currently-building">
-        <Link href="/work" className="group inline-block no-underline mb-6">
-          <h2 className="font-display font-semibold text-2xl md:text-3xl text-gold group-hover:text-gold-bright transition-colors duration-150 flex items-center gap-2 border-b border-gold/30 group-hover:border-gold pb-0.5">
-            Currently Building <GoldDot linkMode />
-          </h2>
-        </Link>
         <CurrentlyBuilding />
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="latest-writing">
@@ -71,7 +65,7 @@ export default function HomePage() {
       </SectionWrapper>
 
       <div className="max-w-content mx-auto px-6 md:px-12 lg:px-16">
-        <GoldRule className="w-full" />
+        <SectionRule className="w-full" />
       </div>
 
       <SectionWrapper id="beyond-code">
