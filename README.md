@@ -1,16 +1,44 @@
-# PORTFOLIO
+# Aditya Jha — Personal Portfolio
 
-**Aditya Jha — personal portfolio, built like a physical document.**
+**Built like a physical document. Not a template.**
 
 A neobrutalist, editorial portfolio for a second-year CS student and SDE intern who treats code like craft. No gradients, no soft shadows, no template defaults — just ink, structure, and intent. Every design decision here is traceable to a reason; nothing is decorative by default.
 
 ```
 ████████████████████████████████████████
-█  Portfolio                            █
-█                                       █
+█  ADITYA JHA                           █
+█  neobrutalist portfolio               █
 █  status: actively maintained          █
 ████████████████████████████████████████
 ```
+
+![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?style=flat&logo=vercel&logoColor=white&labelColor=0D0D0D&color=F5F0E8)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat&logo=next.js&logoColor=white&labelColor=0D0D0D)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-black?style=flat&logo=typescript&logoColor=white&labelColor=0D0D0D)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-black?style=flat&logo=tailwindcss&logoColor=38BDF8&labelColor=0D0D0D)
+![Built Without](https://img.shields.io/badge/built%20without-templates-black?style=flat&labelColor=0D0D0D&color=D94F3D)
+![License](https://img.shields.io/badge/license-MIT-black?style=flat&logo=opensourceinitiative&logoColor=white&labelColor=0D0D0D)
+![GitHub last commit](https://img.shields.io/github/last-commit/adityajha1606/adityajha-portfolio?style=flat&labelColor=0D0D0D&color=F5F0E8)
+
+<!--
+Lighthouse badges — swap to a GitHub Actions–generated dynamic badge once
+the Lighthouse CI workflow is wired up. Static for now, update after each audit.
+-->
+![Performance](https://img.shields.io/badge/performance-97%2F100-brightgreen?style=flat&labelColor=0D0D0D)
+![Accessibility](https://img.shields.io/badge/accessibility-100%2F100-brightgreen?style=flat&labelColor=0D0D0D)
+
+<!--
+HERO SCREENSHOT / GIF
+Replace the line below with an actual capture of the site — ideally a short
+GIF showing the page wipe on load, a hover state (translate + shadow shift),
+and the nib cursor's ink trail in motion. A static screenshot communicates
+the layout; a GIF communicates the actual feel of the system, which is the
+whole point of this project. Drop the file in /public/readme/ and reference
+it locally, e.g. ![Site preview](./public/readme/preview.gif)
+-->
+![Site preview](./public/readme/preview.gif)
+
+> Most portfolios are trying to look like software. This one is trying to look like a document — something printed, stamped, and handled, not generated and forgotten.
 
 ---
 
@@ -36,7 +64,7 @@ A neobrutalist, editorial portfolio for a second-year CS student and SDE intern 
 
 ## Design Philosophy
 
-This portfolio is built on the idea that a portfolio should read like a printed, hand-made document rather than a generated one. The reference points are zines, stamped paperwork, annotated manuscripts, and print layout grids — not SaaS landing pages.
+This portfolio is built on the idea that it should read like a printed, hand-made document rather than a generated one. The reference points are zines, stamped paperwork, annotated manuscripts, and print layout grids — not SaaS landing pages.
 
 - **Neobrutalist & editorial.** Hard black borders, sharp corners (zero border-radius everywhere, no exceptions), heavy hard shadows (`8px 8px 0 black`), and a strict 8px spacing grid underneath all of it.
 - **Color carries meaning.** The default state is bone (warm off-white) + ink (black). Accent colors are assigned only when content earns them — a section doesn't get a color because it needs one, it gets a color because that color says something specific about what's inside.
@@ -50,17 +78,34 @@ This portfolio is built on the idea that a portfolio should read like a printed,
 
 ## Color System
 
-| Token       | Hex       | Role                                               |
-| ----------- | --------- | -------------------------------------------------- |
-| `--bone`    | `#F5F0E8` | Page ground                                        |
-| `--ink`     | `#0D0D0D` | Structure, text, borders, shadows                  |
-| `--strike`  | `#E8C547` | Full-Stack / Tools projects, priority signals      |
-| `--fault`   | `#D94F3D` | Standout tags, red moments, emphasis               |
-| `--teal`    | `#2E6B5E` | ML / AI projects                                   |
-| `--purple`  | `#7B4FD4` | Experience section, deep systems                   |
-| `--coral`   | `#F4725B` | Personal content: latest writing, some credentials |
-| `--blue`    | `#1E90FF` | Stack section                                      |
-| `--magenta` | `#D9469A` | Beyond Code section                                |
+A quick visual index before the full breakdown — nine tokens, each locked to one content category:
+
+![bone](https://img.shields.io/badge/-%20-F5F0E8?style=flat-square) `bone` `#F5F0E8`
+![ink](https://img.shields.io/badge/-%20-0D0D0D?style=flat-square) `ink` `#0D0D0D`
+![strike](https://img.shields.io/badge/-%20-E8C547?style=flat-square) `strike` `#E8C547`
+![fault](https://img.shields.io/badge/-%20-D94F3D?style=flat-square) `fault` `#D94F3D`
+![teal](https://img.shields.io/badge/-%20-2E6B5E?style=flat-square) `teal` `#2E6B5E`
+![purple](https://img.shields.io/badge/-%20-7B4FD4?style=flat-square) `purple` `#7B4FD4`
+![coral](https://img.shields.io/badge/-%20-F4725B?style=flat-square) `coral` `#F4725B`
+![blue](https://img.shields.io/badge/-%20-1E90FF?style=flat-square) `blue` `#1E90FF`
+![magenta](https://img.shields.io/badge/-%20-D9469A?style=flat-square) `magenta` `#D9469A`
+
+<details>
+<summary><strong>Full palette table</strong> (token, hex, role)</summary>
+
+| Token | Hex | Role |
+|---|---|---|
+| `--bone` | `#F5F0E8` | Page ground |
+| `--ink` | `#0D0D0D` | Structure, text, borders, shadows |
+| `--strike` | `#E8C547` | Full-Stack / Tools projects, priority signals |
+| `--fault` | `#D94F3D` | Standout tags, red moments, emphasis |
+| `--teal` | `#2E6B5E` | ML / AI projects |
+| `--purple` | `#7B4FD4` | Experience section, deep systems |
+| `--coral` | `#F4725B` | Personal content: latest writing, some credentials |
+| `--blue` | `#1E90FF` | Stack section |
+| `--magenta` | `#D9469A` | Beyond Code section |
+
+</details>
 
 **Usage rules:**
 
@@ -69,15 +114,41 @@ This portfolio is built on the idea that a portfolio should read like a printed,
 - Accent colors are never combined arbitrarily — each one is locked to a specific content category (see table above) and does not appear outside that category.
 - Text on colored backgrounds is always `--ink` or `--bone`, chosen for contrast, never a tinted variant of the accent itself.
 
+<details>
+<summary><strong>Design tokens as code</strong> (as defined in <code>globals.css</code>)</summary>
+
+```css
+@theme {
+  --color-bone: #F5F0E8;
+  --color-ink: #0D0D0D;
+  --color-strike: #E8C547;
+  --color-fault: #D94F3D;
+  --color-teal: #2E6B5E;
+  --color-purple: #7B4FD4;
+  --color-coral: #F4725B;
+  --color-blue: #1E90FF;
+  --color-magenta: #D9469A;
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-hard: 8px 8px 0 var(--color-ink);
+  --spacing-grid: 8px;
+}
+```
+
+</details>
+
 ---
 
 ## Typography
 
-| Role    | Typeface       | Weights         | Used for                                                  |
-| ------- | -------------- | --------------- | --------------------------------------------------------- |
-| Display | Syne           | 800             | Headings, hero name, section titles                       |
-| Body    | DM Sans        | 400 / 500       | Paragraphs, descriptions, UI copy                         |
-| Mono    | JetBrains Mono | 400 / 500 / 700 | Tags, dates, metadata, code blocks, ghost section numbers |
+| Role | Typeface | Weights | Used for |
+|---|---|---|---|
+| Display | Syne | 800 | Headings, hero name, section titles |
+| Body | DM Sans | 400 / 500 | Paragraphs, descriptions, UI copy |
+| Mono | JetBrains Mono | 400 / 500 / 700 | Tags, dates, metadata, code blocks, ghost section numbers |
 
 **Type scale notes:**
 
@@ -109,20 +180,23 @@ This portfolio is built on the idea that a portfolio should read like a printed,
 
 ## Page-by-Page Breakdown
 
-| Page          | Purpose                            | Notable elements                                                        |
-| ------------- | ---------------------------------- | ----------------------------------------------------------------------- |
-| `/` (Home)    | Editorial digest of the whole site | Section previews, scroll-triggered reveals, hero name stagger animation |
-| `/work`       | Full project archive               | Four-variant project cards, standout tags, filterable by category       |
-| `/about`      | Personal narrative and context     | Photo card, city sculpture, pull quotes, poem card, motto cards         |
-| `/experience` | Internship and work history        | Purple-accented timeline, role descriptions, stack used per role        |
-| `/contact`    | Get-in-touch flow                  | Split layout, copy-email, diff-view confirmation state                  |
-| `/404`        | Not-found state                    | Red period mark, yellow RETURN button                                   |
+| Page | Purpose | Notable elements |
+|---|---|---|
+| `/` (Home) | Editorial digest of the whole site | Section previews, scroll-triggered reveals, hero name stagger animation |
+| `/work` | Full project archive | Four-variant project cards, standout tags, filterable by category |
+| `/about` | Personal narrative and context | Photo card, city sculpture, pull quotes, poem card, motto cards |
+| `/experience` | Internship and work history | Purple-accented timeline, role descriptions, stack used per role |
+| `/contact` | Get-in-touch flow | Split layout, copy-email, diff-view confirmation state |
+| `/404` | Not-found state | Red period mark, yellow RETURN button |
 
 ---
 
 ## Component Library
 
 A self-contained set of components, each built to the system's border/shadow/color rules rather than pulled from an unmodified kit:
+
+<details>
+<summary><strong>Show all components</strong></summary>
 
 - `Button` — primary, secondary, and ghost variants, all using translate-on-hover instead of color shift
 - `ProjectCard` — four status variants (teal / yellow / ink-with-shadow / bone)
@@ -135,26 +209,31 @@ A self-contained set of components, each built to the system's border/shadow/col
 - `PullQuote`, `PoemCard`, `MottoCard`, `InterestCard` — editorial content blocks used on About
 - `DiffView` — used in the contact form's thank-you state to mimic a code diff
 
+</details>
+
 ---
 
 ## Tech Stack
 
-| Layer      | Choice                                                                                    |
-| ---------- | ----------------------------------------------------------------------------------------- |
-| Framework  | Next.js 16 (App Router), TypeScript strict                                                |
-| Styling    | Tailwind CSS v4, CSS-first `@theme` config (no `tailwind.config.ts`)                      |
-| Animation  | Framer Motion (page wipe, hero name stagger, marquee)                                     |
-| Icons      | Lucide React                                                                              |
-| Forms      | React Hook Form + Zod, Web3Forms via server-side proxy                                    |
-| Security   | Strict CSP with per-request nonces (`proxy.ts`), security headers, zero secrets in source |
-| Deployment | Vercel                                                                                    |
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router), TypeScript strict |
+| Styling | Tailwind CSS v4, CSS-first `@theme` config (no `tailwind.config.ts`) |
+| Animation | Framer Motion (page wipe, hero name stagger, marquee) |
+| Icons | Lucide React |
+| Forms | React Hook Form + Zod, Web3Forms via server-side proxy |
+| Security | Strict CSP with per-request nonces (`proxy.ts`), security headers, zero secrets in source |
+| Deployment | Vercel |
 
 ---
 
 ## Project Structure
 
+<details>
+<summary><strong>Show directory tree</strong></summary>
+
 ```
-hard-copy/
+portfolio/
 ├── app/
 │   ├── page.tsx              # Home — editorial digest
 │   ├── work/
@@ -184,65 +263,7 @@ hard-copy/
 └── package.json
 ```
 
----
-
-## Setup
-
----
-
-## Color System
-
-| Token       | Hex       | Role                                               |
-| ----------- | --------- | -------------------------------------------------- |
-| `--bone`    | `#F5F0E8` | Page ground                                        |
-| `--ink`     | `#0D0D0D` | Structure, text, borders, shadows                  |
-| `--strike`  | `#E8C547` | Full-Stack / Tools projects, priority signals      |
-| `--fault`   | `#D94F3D` | Standout tags, red moments, emphasis               |
-| `--teal`    | `#2E6B5E` | ML / AI projects                                   |
-| `--purple`  | `#7B4FD4` | Experience section, deep systems                   |
-| `--coral`   | `#F4725B` | Personal content: latest writing, some credentials |
-| `--blue`    | `#1E90FF` | Stack section                                      |
-| `--magenta` | `#D9469A` | Beyond Code section                                |
-
----
-
-## Typography
-
-| Role    | Typeface       | Weights                                       |
-| ------- | -------------- | --------------------------------------------- |
-| Display | Syne           | 800 — headings, hero name, section titles     |
-| Body    | DM Sans        | 400 / 500 — paragraphs, descriptions          |
-| Mono    | JetBrains Mono | 400 / 500 / 700 — tags, dates, metadata, code |
-
----
-
-## Key Features
-
-- **Page wipe intro** — full-screen ink curtain slides off on first visit, tracked via session storage so it never repeats.
-- **Fixed sidebar** with vertical scroll progress (yellow fill on black track).
-- **Custom nib cursor** — fountain-pen nib SVG with an ink-dot trail on links and buttons.
-- **Sticky navbar** with a red-underline active state.
-- **Home page as editorial digest** — previews of Work, Experience, Credentials, Stack, Currently Building, Latest Writing, and Beyond Code.
-- **Project cards in four variants** — teal fill (completed ML), yellow fill (completed Full-Stack/Tools), ink fill with colored shadow (WIP), bone fill (minor contributions).
-- **Standout tags** — project-specific, manually curated, rendered in fault red to flag standout skills.
-- **Contact page** — split layout, copy-email interaction, diff-view thank-you state.
-- **404 page** — red period, yellow RETURN button.
-- **Easter eggs** — Konami code triggers a "GOAL" football overlay; a styled console message greets curious developers.
-- **About page** — photo card, ghost section numbers, a typographic city-list sculpture, pull quotes, a poem card, motto cards, interest cards, highlighter hover, and a rotated auth stamp.
-
----
-
-## Tech Stack
-
-| Layer      | Choice                                                                                    |
-| ---------- | ----------------------------------------------------------------------------------------- |
-| Framework  | Next.js 16 (App Router), TypeScript strict                                                |
-| Styling    | Tailwind CSS v4, CSS-first `@theme` config (no `tailwind.config.ts`)                      |
-| Animation  | Framer Motion (page wipe, hero name stagger, marquee)                                     |
-| Icons      | Lucide React                                                                              |
-| Forms      | React Hook Form + Zod, Web3Forms via server-side proxy                                    |
-| Security   | Strict CSP with per-request nonces (`proxy.ts`), security headers, zero secrets in source |
-| Deployment | Vercel                                                                                    |
+</details>
 
 ---
 
@@ -252,8 +273,8 @@ hard-copy/
 
 ```bash
 # clone
-git clone https://github.com/adityajha1606/hard-copy.git
-cd hard-copy
+git clone https://github.com/adityajha1606/adityajha-portfolio.git
+cd adityajha-portfolio
 
 # install
 npm install
@@ -292,7 +313,7 @@ Create a `.env.local` file in the project root:
 WEB3FORMS_ACCESS_KEY=your_key_here
 
 # Optional: site URL used for metadata and canonical links
-NEXT_PUBLIC_SITE_URL=https://hard-copy.vercel.app
+NEXT_PUBLIC_SITE_URL=https://your-site.vercel.app
 ```
 
 Form submissions are routed through a server-side proxy (`lib/proxy.ts`) so the Web3Forms key is never shipped to the client bundle.
@@ -331,11 +352,13 @@ Form submissions are routed through a server-side proxy (`lib/proxy.ts`) so the 
 
 ## Links
 
-- **Live site:** [hard-copy.vercel.app](#)
-- **Repository:** [github.com/adityajha1606/hard-copy](#)
+- **Live site:** [adityajha-portfolio-ten.vercel.app](https://adityajha-portfolio-ten.vercel.app/)
+- **Repository:** [github.com/adityajha1606/adityajha-portfolio](https://github.com/adityajha1606/adityajha-portfolio)
+
+> Repo also has a custom social preview image (Settings → Social preview) in the same neobrutalist system, so shared links don't fall back to a generic GitHub card.
 
 ---
 
 ## Closing Note
 
-This site is built and maintained by one person who'd rather over-engineer it than ship it generic.
+Built and maintained by one person who'd rather over-engineer it than ship it generic.
