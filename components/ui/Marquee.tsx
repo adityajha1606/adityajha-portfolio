@@ -2,23 +2,28 @@
 
 import { useReducedMotion } from 'framer-motion'
 
-export function Marquee() {
-  const prefersReducedMotion = useReducedMotion()
+interface MarqueeProps {
+  items?: string[]
+}
 
-  const items = [
-    'Python',
-    'TypeScript',
-    'ASP.NET Core',
-    'Next.js',
-    'React',
-    'XGBoost',
-    'SignalR',
-    'SQL Server',
-    'Git',
-    'Leadership',
-    'ML',
-    'Docker',
-  ]
+// Default items for the hero page (professional skills)
+const defaultItems = [
+  'Python',
+  'TypeScript',
+  'ASP.NET Core',
+  'Next.js',
+  'React',
+  'XGBoost',
+  'SignalR',
+  'SQL Server',
+  'Git',
+  'Leadership',
+  'ML',
+  'Docker',
+]
+
+export function Marquee({ items = defaultItems }: MarqueeProps) {
+  const prefersReducedMotion = useReducedMotion()
 
   const row = items.map((text, i) => (
     <span key={i} className="inline-flex items-center gap-3">
@@ -29,12 +34,12 @@ export function Marquee() {
 
   return (
     <div
-      className="h-[52px] bg-ink border-y-[3px] border-ink flex items-center overflow-hidden"
+      className="h-[48px] bg-ink border-y-[3px] border-ink flex items-center overflow-hidden"
       aria-hidden="true"
     >
       <div
         className={`flex gap-6 whitespace-nowrap ${
-          prefersReducedMotion ? '' : 'animate-[marquee_20s_linear_infinite]'
+          prefersReducedMotion ? '' : 'animate-[marquee_24s_linear_infinite]'
         }`}
       >
         {row}

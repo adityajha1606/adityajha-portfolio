@@ -104,12 +104,47 @@ body {
     max-width: 75ch;
   }
 
+  /* ── Highlighter hover (used on About page) ── */
+  .hl {
+    background: linear-gradient(transparent 58%, rgba(232, 197, 71, 0.38) 58%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    transition: background-size 200ms ease-out;
+    padding-bottom: 1px;
+  }
+  .hl:hover {
+    background-size: 100% 100%;
+  }
+
+  /* ── Drop cap (used on About page) ── */
+  .dropcap::first-letter {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 5em;
+    line-height: 0.78;
+    float: left;
+    margin-right: 8px;
+    margin-top: 2px;
+    color: var(--color-ink);
+  }
+
   @keyframes marquee {
     0% {
       transform: translateX(0);
     }
     100% {
       transform: translateX(-50%);
+    }
+  }
+
+  /* Pulse animation for status dots */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
     }
   }
 }
