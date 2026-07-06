@@ -1,535 +1,589 @@
+import Link from 'next/link'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { SectionRule } from '@/components/ui/SectionRule'
-import { ClickableHeading } from '@/components/ui/ClickableHeading'
-import { Card } from '@/components/ui/Card'
+import { Card, type CardVariant } from '@/components/ui/Card'
 import { Tag } from '@/components/ui/Tag'
 import { Button } from '@/components/ui/Button'
 import { Marquee } from '@/components/ui/Marquee'
+import EducationTimeline from '@/components/about/EducationTimeline'
 
-// ── City data for the typographic city list ──
+// ── City data ──
 const cities = [
-  { name: 'Solapur', year: '2004' },
-  { name: 'Aurangabad', year: '2006' },
-  { name: 'Pune', year: '--' },
-  { name: 'Mumbai', year: '--' },
-  { name: 'Kolhapur', year: '--' },
-  { name: 'Indore', year: '--' },
-  { name: 'Nagpur', year: '--' },
-  { name: 'Nashik', year: '--' },
+  { name: 'Aurangabad', year: '2005' },
+  { name: 'Solapur', year: '2013' },
+  { name: 'Pune', year: null },
+  { name: 'Mumbai', year: null },
+  { name: 'Kolhapur', year: null },
+  { name: 'Indore', year: null },
+  { name: 'Nagpur', year: null },
+  { name: 'Nashik', year: null },
   { name: 'Delhi', year: '2018' },
-  { name: 'Gurgaon', year: '--' },
+  { name: 'Gurgaon', year: null },
   { name: 'Hyderabad', year: '2022' },
   { name: 'Chennai', year: '2024', active: true },
 ]
 
-// ── Marque content (personal register, distinct from hero marque) ──
+// ── Marquee items ──
 const aboutMarqueeItems = [
   'Solapur Born',
-  'Chennai-Adjacent',
+  '12 Cities Survived',
   'Defensive Midfielder',
-  'Diary Smuggler',
-  'Maximalist',
-  'Qawali Evangelist',
-  'District Champion (Once, Proudly)',
-  'Professional Over-Engineer',
-  'Pessimist by Day',
-  'Optimist by Stubbornness',
+  'Backend First',
+  'ML Second',
+  'Diary Carrier',
+  'Qawali Loud',
+  'Over-Engineer by Diagnosis',
+  'Pessimism of Intellect',
+  'Optimism of Will',
+  'Aurangabad U-15',
+  'Chennai Made',
 ]
+
+// ── Poem ──
+const poem = `If you were the sun,
+I would be Icarus.
+I would still rise toward you -
+not out of courage,
+but out of fear.
+Fear of never touching your warmth,
+fear of standing still
+while regret gnaws at me
+for never trying.
+
+If you were the sun,
+I would be Icarus.
+I would chart your path from afar,
+orbiting in silence,
+hoping you'd glance my way -
+hoping you'd finally see me
+in the quiet spaces between your rays.
+
+If you were the sun,
+I would be Icarus.
+I would stitch wings
+with trembling hands -
+wings sewn from fragile breath,
+from words I never dared to say,
+from thoughts of you
+that clouded my every sky.
+And I would know,
+as I stitched,
+just how little time they'd last.
+
+If you were the sun,
+I would be Icarus.
+I would fly,
+knowing well you could never be reached,
+knowing you'd burn me -
+not enough to die,
+just enough to remember.
+
+If you were the sun,
+I would be Icarus.
+And I wouldn't scream as I fell -
+I would only hope
+that in that single, sacred moment
+when I drew closest,
+you saw me ablaze.
+That you saw me -
+and looked back, even just once.
+
+If you were the sun,
+I would be Icarus.
+And I would laugh even as I fell -
+because to fall
+is proof I once soared.
+
+If you were the sun,
+I would be Icarus.
+For I always knew I would fall.
+And still,
+I chose to fly
+towards you.`
+
+// ── Shared section header ──
+function SectionHeader({ index, eyebrow, title }: { index: string; eyebrow: string; title: string }) {
+  return (
+    <div className="pb-5 mb-10 border-b-[3px] border-ink">
+      <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink/35 mb-2">
+        {index} / {eyebrow}
+      </p>
+      <h2 className="font-display font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[0.95] tracking-[-0.03em]">
+        {title}
+      </h2>
+    </div>
+  )
+}
 
 export default function AboutPage() {
   return (
     <>
-      {/* ════════════════════════════════════════════════
-          S1 — OPENING STATEMENT (split grid)
-          bone left · ink right
-      ════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════════
+          COLD OPEN
+      ══════════════════════════════════════════════════ */}
       <section className="grid grid-cols-1 md:grid-cols-2 border-b-[3px] border-ink">
-        {/* ── LEFT (bone) ── */}
-        <div className="bg-bone flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 md:py-24 border-r-0 md:border-r-[3px] border-ink">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-4">
-            About · Aditya Jha
+        {/* LEFT — bone */}
+        <div className="bg-bone flex flex-col justify-center px-10 md:px-14 lg:px-20 py-20 md:py-28 border-r-0 md:border-r-[3px] border-ink">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/35 mb-5">
+            About · Aditya Jha · SRMIST CSE 2024–2028
           </p>
 
-          {/* Stamp */}
-          <span className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.12em] border-2 border-fault text-fault px-3 py-1.5 mb-8">
-            SRMIST · CSE · 2024–2028
-          </span>
-
-          <h1 className="font-display font-extrabold text-[clamp(3rem,8vw,5rem)] leading-[0.92] tracking-[-0.03em] text-ink mb-6">
+          <h1 className="font-display font-extrabold text-[clamp(3.5rem,9vw,6rem)] leading-[0.88] tracking-[-0.04em] text-ink mb-7">
             Aditya<br />Jha<span className="text-fault">.</span>
           </h1>
 
-          <p className="font-body font-medium text-lg text-ink/70 max-w-md mb-8 leading-relaxed">
-            I write code like I write poetry: too many revisions, an unhealthy attachment
-            to semicolons, and a tendency to make things harder than they needed to be on
-            purpose. ML by day, SDE by night, defensive midfielder always. I keep a diary
-            nobody&apos;s allowed to read and a GitHub everyone&apos;s invited to judge.
+          <p className="font-body font-medium text-base text-ink/65 max-w-[38ch] mb-10 leading-relaxed">
+            Aspiring Backend/Infra engineer. I make ML systems actually run in
+            production. Very strong feelings about cookie-based auth and
+            vanishing gradients.
           </p>
 
-          {/* Status pill */}
-          <div className="inline-flex items-center gap-2 bg-strike border-[3px] border-ink px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.08em] text-ink w-fit mb-12">
-            <span className="w-[7px] h-[7px] rounded-full bg-ink animate-[pulse_2s_ease-in-out_infinite]" />
-            Open · 2027 Internships
-          </div>
-
-          <div>
+          <div className="flex flex-col sm:flex-row items-start gap-4">
+            <div className="inline-flex items-center gap-2 bg-strike border-[3px] border-ink px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-ink">
+              <span className="w-2 h-2 rounded-full bg-ink animate-pulse" />
+              Open · 2027 Internships
+            </div>
             <Button variant="primary" href="/contact">
               Get in Touch ↓
             </Button>
           </div>
         </div>
 
-        {/* ── RIGHT (ink) ── */}
-        <div className="bg-ink flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 md:py-24">
-          <h2 className="font-display font-extrabold text-[clamp(3rem,6vw,5rem)] leading-[0.9] tracking-[-0.04em] text-bone">
-            Building<br />With Love<br /><span className="text-strike">(and Mild Obsession).</span>
-          </h2>
-          <p className="font-body font-medium text-bone/65 mt-6 max-w-sm leading-relaxed">
-            CS undergrad who believes over-engineering is just engineering with passion,
-            empathy is an underrated tech stack, and the assist always outscores the goal
-            - on the pitch and in the pull request.
-          </p>
+        {/* RIGHT — image with Instagram link */}
+        <div className="bg-ink flex items-center justify-center px-10 md:px-14 lg:px-20 py-20 md:py-28">
+          <a
+            href="https://www.instagram.com/adi_on_ig/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border-[3px] border-fault shadow-[8px_8px_0_var(--color-fault)] max-w-[240px] w-full aspect-[3/4] overflow-hidden bg-bone/10 transition-all duration-150 hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-fault)]"
+          >
+            <img
+              src="/images/aditya.jpeg"
+              alt="Aditya Jha"
+              className="w-full h-full object-cover"
+              width={240}
+              height={320}
+            />
+          </a>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════
-          MARQUEE — personal register (between S1 & S2)
-      ════════════════════════════════════════════════ */}
+      {/* MARQUEE */}
       <Marquee items={aboutMarqueeItems} />
 
-      {/* ════════════════════════════════════════════════
-          S2 — ORIGIN
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="origin" className="relative">
-        {/* Ghost number */}
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
-          02
+      {/* ══════════════════════════════════════════════════
+          S1 — WHAT I BUILD
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="what-i-build" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
+          01
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            02 / Origin
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            Where It Started
-          </h2>
+        <SectionHeader index="01" eyebrow="What I Build" title="The Work" />
+
+        {/* Stat cards – no hover */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+          <Card variant="blue" noHover className="p-6">
+            <span className="font-display font-extrabold text-3xl leading-none text-ink block mb-1">
+              Backend
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-ink/45">
+              Production-grade
+            </p>
+          </Card>
+          <Card variant="yellow" noHover className="p-6">
+            <span className="font-display font-extrabold text-3xl leading-none text-ink block mb-1">
+              Machine Learning / AI
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-ink/45">
+              Real-world data
+            </p>
+          </Card>
+          <Card variant="teal" noHover className="p-6">
+            <span className="font-display font-extrabold text-3xl leading-none text-bone block mb-1">
+              Systems &amp; Infra
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/40">
+              Target · 2028
+            </p>
+          </Card>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
-          <div>
-            {/* Stat row */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <Card variant="default" className="p-5 min-w-[130px]">
-                <span className="font-display font-extrabold text-4xl leading-none text-ink">12</span>
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-ink/50 mt-1">
-                  Cities lived in
-                </p>
-              </Card>
-              <Card variant="default" className="p-5 min-w-[130px]">
-                <span className="font-display font-extrabold text-4xl leading-none text-ink">2008</span>
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-ink/50 mt-1">
-                  First computer
-                </p>
-              </Card>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          The job I want: backend and infrastructure, ML fluency as the sharp
+          edge. Not the person writing Jupyter notebooks that never see
+          production. The person building what they run on — the pipeline, the
+          system, the thing that stays alive at 3&nbsp;AM when it really
+          shouldn&apos;t.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-10 max-w-[72ch]">
+          I want to understand the model <em>and</em> the environment it&apos;s
+          living in. One without the other is either a science project or a
+          house fire.
+        </p>
+
+        {/* Before the Code + NMDC – no hover */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          <Card variant="coral" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              Before the Code
+            </p>
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/90">
+              I was engineering things before I knew the word for it. Rationing
+              30 minutes of dongle internet like a job scheduler. Memorizing
+              Pokémon type charts without realising that was a data structure.
+              Filling notebooks with football formations nobody asked for. The
+              tools showed up later. The brain was already doing the work.
+            </p>
+          </Card>
+          <Card variant="purple" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              NMDC Project
+            </p>
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/90 mb-4">
+              Built an internal event management and reporting system for NMDC —
+              India&apos;s largest iron ore producer, Government of India. Real
+              departments, real deadlines. Previously they ran operations on
+              forwarded screenshots and three WhatsApp groups. It ran. It
+              helped. First time I felt the actual distance between
+              "functional" and "useful."
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Tag>ASP.NET Core</Tag>
+              <Tag>Razor Pages</Tag>
+              <Tag>SignalR</Tag>
+              <Tag>SQL Server</Tag>
+              <Tag>Tailwind</Tag>
             </div>
+          </Card>
+        </div>
 
-            {/* DropCap paragraph */}
-            <p className="dropcap font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              I remember the bubble wrap better than I remember most of third grade. Dad
-              came home with this all-in-one PC - no separate tower, just a screen that
-              quietly did everything, like a Swiss Army knife that also happened to
-              compute. We did a small pooja for it, because in our house, new electronics
-              got the same welcome as a new family member. I remember thinking{' '}
-              <em>this important thing belongs to us now</em>, with the gravity of a kid
-              who has clearly never owned anything important before.
-            </p>
-
-            <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              We had a dongle for internet and a strict time limit, so I learned to ration
-              like a war economist. That&apos;s how I discovered I could watch Pokémon
-              episodes on demand - at four years old, that felt less like a feature and
-              more like discovering fire, except the fire also gave you Pikachu. The idea
-              that a machine could just <em>give you exactly what you asked for</em> never
-              really left me. It&apos;s basically my whole personality now, just pointed at
-              APIs instead of cartoons.
-            </p>
-
-            <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              Years later I wrote my first line of HTML in Dr. Angela Yu&apos;s Udemy
-              course, had the classic &ldquo;oh, <em>that&apos;s</em> how the internet
-              works&rdquo; moment, and immediately concluded I was basically a founder.
-              Then I found StatQuest - a YouTube channel where a man explains gradient
-              descent using stick figures and, occasionally, a song - and realized you
-              could be a colossal nerd and still be likable. Possibly even cool. This was
-              a personal revelation roughly on par with the Pokémon thing.
-            </p>
-
-            <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              Around the same time I found Opta, the people who turn twenty-two grown men
-              kicking a ball into a spreadsheet, and something clicked properly. ML and
-              software development didn&apos;t arrive separately - they showed up in the
-              same week, through football, like two friends who turn out to know each
-              other from a completely different context. I decided: I will build systems,
-              train models, and eventually pretend to understand football tactics better
-              than the actual coaches. Still working on that last part.
-            </p>
-
-            {/* PullQuote 1 — yellow */}
-            <blockquote className="font-display font-extrabold text-2xl md:text-3xl leading-tight border-l-[6px] border-strike pl-6 my-8 tracking-[-0.01em]">
-              &ldquo;I always thought the assist meant more than the goal.&rdquo;
-            </blockquote>
-
-            <p className="font-body font-medium text-sm text-ink/50 -mt-4 mb-4">
-              Possibly because I have a complicated relationship with taking credit.
-            </p>
-          </div>
-
-          {/* Photo card */}
-          <div className="border-[3px] border-ink shadow-[8px_8px_0_var(--color-ink)] bg-ink max-w-[200px] aspect-[3/4] flex flex-col overflow-hidden">
-            <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a]">
-              <span className="font-display font-extrabold text-6xl text-strike">AJ</span>
-            </div>
-            <div className="bg-strike border-t-[3px] border-ink px-3 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-ink">
-              Aditya Jha · Solapur · 2008 · pre-existential crisis, post-pooja
-            </div>
-          </div>
+        <div className="border-t-[3px] border-ink pt-6">
+          <p className="font-body font-medium text-base leading-relaxed text-ink/70 max-w-[72ch]">
+            Second year at SRMIST. 9.4 CGPA. Targeting ML Infra / SDE roles
+            with real data depth by 2028 — and the increasingly specific hope
+            that "35 LPA" is not as delusional as it sounds.
+          </p>
         </div>
       </SectionWrapper>
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S3 — FOOTBALL
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="football" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
+      {/* ══════════════════════════════════════════════════
+          S2 — EDUCATION
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="education" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
+          02
+        </span>
+        <SectionHeader index="02" eyebrow="Education" title="The Path" />
+        <EducationTimeline />
+      </SectionWrapper>
+
+      <SectionRule />
+
+      {/* ══════════════════════════════════════════════════
+          S3 — CRAFT
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="craft" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
           03
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            03 / Football
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            The Tactical Brain
-          </h2>
-        </div>
+        <SectionHeader index="03" eyebrow="Craft" title="How I Build" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            {/* Blue stat row */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <Card variant="blue" className="p-5 min-w-[130px]">
-                <span className="font-display font-extrabold text-4xl leading-none text-ink">U‑15</span>
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-ink/50 mt-1">
-                  District Level
-                </p>
-              </Card>
-              <Card variant="blue" className="p-5 min-w-[130px]">
-                <span className="font-display font-extrabold text-4xl leading-none text-ink">9</span>
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-ink/50 mt-1">
-                  Age first played
-                </p>
-              </Card>
-            </div>
+        <blockquote className="font-display font-extrabold text-[clamp(1.4rem,3.5vw,2.25rem)] leading-tight border-l-[6px] border-fault pl-6 mb-10 tracking-[-0.02em] max-w-[28ch]">
+          "I over-engineer things. People say it like it&apos;s an insult.
+          I have never once taken it as one."
+        </blockquote>
 
-            <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              I was never the guy who scored the bicycle kick everyone still talks about
-              at reunions. I was the guy who made sure the team didn&apos;t concede in the
-              83rd minute because somebody forgot to track back - the metronome, the
-              deeply unglamorous job of being the reason things{' '}
-              <em>didn&apos;t</em> fall apart. I had a thing called the
-              &ldquo;pausa&rdquo;: knowing exactly when to slow the game to a crawl and
-              when to detonate it. In my age group I was, modestly, one of the best
-              defensively and athletically - which is sports-speak for &ldquo;fast, and
-              extremely annoying to play against.&rdquo; I&apos;d score when the team
-              genuinely needed it, because someone has to, but the assist always felt like
-              the better story: set someone else up to be the hero, then watch from
-              midfield like a proud, slightly smug parent.
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          Minimalism can keep knocking. I&apos;m not home. I&apos;m a
+          hyper-detailing enthusiast — I will raise the bar past what was asked,
+          past what was expected, past the point where most people would even
+          notice, purely because the noticing was never the point.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-10 max-w-[72ch]">
+          I think code deserves the same care you&apos;d give a relationship you
+          actually intend to keep. How you name things. How the pieces talk to
+          each other. The rhythm a well-built system falls into once you finally
+          stop fighting it. Building is art with a compiler attached. Skip the
+          love and the thing still runs, technically — the way a relationship
+          "still works" when nobody&apos;s actually talking anymore.
+        </p>
+
+        {/* Craft cards – NMDC linked, Play static */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <Link href="/experience/nmdc" className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fault rounded-none">
+            <Card variant="coral" className="p-6">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+                NMDC
+              </p>
+              <p className="font-body italic font-medium text-sm leading-relaxed text-bone/90">
+                Real people, with actual deadlines and actual managers breathing
+                down their necks, used it instead of three WhatsApp groups and a
+                prayer. It saved 2–3 weeks of miscommunication between sites that
+                had previously been running on vibes and forwarded screenshots.
+                That was the first time I felt the gap between "it runs" and "it
+                helps someone" — and I&apos;ve been chasing that gap ever since.
+              </p>
+            </Card>
+          </Link>
+          <Card variant="purple" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              The Play
             </p>
-
-            <div className="flex flex-wrap gap-2 mt-4">
-              <Tag>Defensive Midfielder</Tag>
-              <Tag>The Metronome</Tag>
-              <Tag>District Level</Tag>
-              <Tag>Opta</Tag>
-              <Tag>PPDA</Tag>
-              <Tag>xT</Tag>
-            </div>
-          </div>
-
-          <div>
-            <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-              Football and code run on the same engine, honestly. You inherit players - or
-              legacy code - with real limitations, and your job is to build a structure
-              that makes them look better than they have any right to. You solve problems
-              inside constraints, you adapt mid-match, you manage space, or state, or
-              both, badly, at 2 AM. Shipping a formation and shipping a product require
-              exactly the same kind of stubbornness, and roughly the same amount of
-              yelling at a whiteboard.
+            <p className="font-body italic font-medium text-sm leading-relaxed text-bone/90">
+              I wrote a play once. My friends read it and said, not unkindly,
+              "this is over-engineered." I said thank you. Not sarcastically —
+              genuinely. If people can feel the amount of effort you buried in
+              something, the effort did its job. In my book, "over-engineered"
+              isn&apos;t a critique. It&apos;s a five-star review with terrible
+              PR.
             </p>
-
-            <Button variant="default" href="/work" className="mt-2">
-              See Football Impact Rating →
-            </Button>
-
-            {/* PullQuote — red left border */}
-            <blockquote className="font-display font-extrabold text-xl md:text-2xl leading-tight border-l-[6px] border-fault pl-6 my-8 tracking-[-0.01em]">
-              &ldquo;Football and code live in the same mental space - usually
-              rent-free.&rdquo;
-            </blockquote>
-          </div>
+          </Card>
         </div>
       </SectionWrapper>
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S4 — CITIES
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="cities" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
+      {/* ══════════════════════════════════════════════════
+          S4 — ORIGIN
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="origin" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
           04
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            04 / Cities
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            12 Cities
-          </h2>
+        <SectionHeader index="04" eyebrow="Origin" title="Where It Started" />
+
+        {/* Stat cards – no hover */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+          <Card variant="blue" noHover className="p-6">
+            <span className="font-display font-extrabold text-4xl leading-none text-ink block mb-1">
+              12 Cities
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-ink/45">
+              2004–2024
+            </p>
+          </Card>
+          <Card variant="coral" noHover className="p-6">
+            <span className="font-display font-extrabold text-4xl leading-none text-bone block mb-1">
+              2008
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/50">
+              First PC · First Pooja
+            </p>
+          </Card>
         </div>
 
-        {/* Loss / Gain cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <div className="bg-ink text-bone border-[3px] border-ink p-6">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/40 mb-3">
-              What It Cost
-            </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-bone/75">
-              Childhood friendships with an expiration date stamped on them before
-              they&apos;d even started. A &ldquo;home city&rdquo; that exists only as a
-              rumor I tell people at parties. The simple luxury of being known in a place
-              before you&apos;ve had to perform for it - never had that, wouldn&apos;t
-              recognize it if it introduced itself.
-            </p>
-          </div>
-          <div className="bg-strike border-[3px] border-ink p-6">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              What It Built
-            </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink">
-              A brain that reads a room faster than most people read a text notification.
-              Emotional maturity that arrived a few years ahead of schedule, uninvited
-              but, in hindsight, extremely useful. An extroversion that isn&apos;t a
-              performance so much as a survival skill that got so good at its job it
-              started passing as a personality trait. And, somehow, against all logistics,
-              a childish heart that refused every single eviction notice life tried to
-              serve it.
-            </p>
-          </div>
-        </div>
-
-        {/* City list */}
-        <div className="mb-10">
-          {cities.map(({ name, year, active }) => (
+        {/* Horizontal city timeline (unchanged) */}
+        <div className="relative overflow-x-auto -mx-8 md:-mx-14 lg:-mx-20 px-8 md:px-14 lg:px-20 pb-2 mb-10">
+          <div className="relative flex items-start min-w-max py-2">
             <div
-              key={name}
-              className="grid grid-cols-[1fr_auto] items-baseline py-3.5 border-b border-ink/10 last:border-b-0 hover:bg-strike/10 hover:pl-2 transition-all cursor-pointer"
-            >
-              <span
-                className={`font-display font-extrabold text-2xl md:text-3xl tracking-[-0.02em] leading-none ${
-                  active ? 'text-strike' : 'text-ink'
-                }`}
+              className="absolute h-[2px] bg-ink/12"
+              style={{ top: '5px', left: '44px', right: '44px' }}
+            />
+            {cities.map((city) => (
+              <div
+                key={city.name}
+                className="relative flex flex-col items-center w-[88px] flex-shrink-0"
               >
-                {name}
-              </span>
-              <span className="font-mono text-sm text-ink/50 flex items-center gap-3">
-                {year}
-                {active && (
-                  <span className="w-[8px] h-[8px] rounded-full bg-strike animate-[pulse_2s_ease-in-out_infinite]" />
+                <div
+                  className={`relative w-[11px] h-[11px] rounded-full z-10 flex-shrink-0 ${
+                    city.active ? 'bg-fault' : 'bg-ink/40'
+                  }`}
+                />
+                <span
+                  className={`font-display font-bold text-[10px] leading-tight text-center mt-2 ${
+                    city.active ? 'text-fault' : 'text-ink/60'
+                  }`}
+                >
+                  {city.name}
+                </span>
+                {city.year && (
+                  <span className="font-mono text-[9px] font-bold text-ink/30 mt-0.5">
+                    {city.year}
+                  </span>
                 )}
-              </span>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
 
-        <p className="font-body font-medium text-base leading-relaxed text-ink/85 max-w-[75ch]">
-          My dad&apos;s government job came with a built-in moving truck. Every couple of
-          years: new city, new school, a new accent to half-learn before everyone could
-          tell I was faking it, a new social hierarchy to crack like a system with no
-          documentation and a hostile onboarding process. I never got the luxury of being
-          known before I opened my mouth, so I learned to read a room before I&apos;d
-          even finished walking into it - who&apos;s barely holding it together,
-          who&apos;s actually fine, who&apos;s <em>performing</em> fine. Eyes don&apos;t
-          lie, even when everything else does. I still run on that.
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          Dad worked in sales. Sales moves you. That&apos;s the whole
+          explanation.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          Every couple of years: new city, new school, new accent to fake for a
+          semester. I never got to be known before I opened my mouth — I had to
+          earn every room fast. That&apos;s where the room-reading came from.
+          Eyes don&apos;t lie. I still live by that.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 max-w-[72ch]">
+          2008: Dad brought home an all-in-one PC. We did a small pooja for it
+          first, because in our house, new technology got a proper welcome. I had
+          30 minutes of dongle internet per day and I squeezed every second.
+          Found Pokémon on demand. Decided a machine that gives you exactly what
+          you ask for is basically magic. Never really updated that opinion.
         </p>
       </SectionWrapper>
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S5 — CRAFT PHILOSOPHY
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="craft" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
+      {/* ══════════════════════════════════════════════════
+          S5 — FOOTBALL
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="football" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
           05
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            05 / Craft
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            How I Build
-          </h2>
+        <SectionHeader index="05" eyebrow="Football" title="The Tactical Brain" />
+
+        {/* Stat cards – no hover */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+          <Card variant="blue" noHover className="p-6">
+            <span className="font-display font-extrabold text-4xl leading-none text-ink block mb-1">
+              U-15
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-ink/45">
+              Aurangabad District Player
+            </p>
+          </Card>
+          <Card variant="teal" noHover className="p-6">
+            <span className="font-display font-extrabold text-4xl leading-none text-bone block mb-1">
+              DM
+            </span>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/50">
+              Defensive Midfielder · The Pausa
+            </p>
+          </Card>
         </div>
 
-        {/* PullQuote — red left border */}
-        <blockquote className="font-display font-extrabold text-2xl md:text-3xl leading-tight border-l-[6px] border-fault pl-6 my-8 tracking-[-0.01em]">
-          &ldquo;I over-engineer things. People say it like it&apos;s an insult. I have
-          never once taken it as one.&rdquo;
-        </blockquote>
-
-        <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-4 max-w-[75ch]">
-          Minimalism can keep knocking. I&apos;m not home. I&apos;m a hyper-detailing
-          enthusiast - I will raise the bar past what was asked, past what was expected,
-          past the point where most people would even notice, purely because the noticing
-          was never the point. There&apos;s a very specific high in making something more
-          than it needed to be, and I am, unapologetically, chasing it the way other
-          people chase a personal best.
-        </p>
-
-        <p className="font-body font-medium text-base leading-relaxed text-ink/85 mb-8 max-w-[75ch]">
-          I think code deserves the same care you&apos;d give a relationship you actually
-          intend to keep. How you name things. How the pieces talk to each other. The
-          rhythm a well-built system falls into once you finally stop fighting it.
-          It&apos;s the same part of the brain that writes a bad poem at 1 AM or sketches
-          a formation that probably won&apos;t work but might. Building is art with a
-          compiler attached. It asks for love. Skip the love and the thing still runs,
-          technically - the way a relationship &ldquo;still works&rdquo; when
-          nobody&apos;s actually talking anymore.
-        </p>
-
-        {/* Evidence cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card variant="default" className="p-6">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              The NMDC Moment
-            </p>
-            <p className="font-body italic font-medium text-sm leading-relaxed text-ink/85">
-              The project got approved. Real people, with actual deadlines and actual
-              managers breathing down their necks, used it instead of three WhatsApp
-              groups and a prayer. It saved 2–3 weeks of miscommunication between sites
-              that had previously been running on vibes and forwarded screenshots. That
-              was the first time I felt the gap between &ldquo;it runs&rdquo; and
-              &ldquo;it helps someone&rdquo; - and I&apos;ve been chasing that gap ever
-              since, the way some people chase a high score.
+        {/* Cruyff quotes – static, no hover */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          <Card variant="purple" noHover className="p-6">
+            <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-bone mb-3">
+              "Playing football is very simple, but playing simple football is
+              the hardest thing there is."
+            </blockquote>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/35">
+              Johan Cruyff
             </p>
           </Card>
-          <Card variant="yellow" className="p-6">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              The Script That Over‑Engineered Itself
-            </p>
-            <p className="font-body italic font-medium text-sm leading-relaxed text-ink/85">
-              I wrote a play once. My friends read it and said, not unkindly, &ldquo;this
-              is over-engineered.&rdquo; I said thank you. Not sarcastically - genuinely.
-              If people can feel the amount of effort you buried in something, the effort
-              did its job. In my book, &ldquo;over-engineered&rdquo; isn&apos;t a
-              critique. It&apos;s a five-star review with terrible PR.
+          <Card variant="magenta" noHover className="p-6">
+            <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-bone mb-3">
+              "You play football with your head, and your legs are there to help
+              you."
+            </blockquote>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/35">
+              Johan Cruyff
             </p>
           </Card>
+        </div>
+
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          I wasn&apos;t the goal scorer. I was the reason the goal scorer had
+          the ball. Defensive midfielder — the metronome, the guy who wins it
+          back, resets the shape, and makes the team look more organised than it
+          actually is.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+          The "pausa" was my thing: knowing when to hold the tempo and when to
+          break it. In my age group I was one of the best defensively and
+          athletically, which is the most restrained way I know how to say I was
+          very good. I&apos;d score when the team needed it. But the assist
+          always felt bigger — setting someone else up is a different kind of
+          satisfaction, and it&apos;s the same instinct that makes me care about
+          infrastructure over features, and systems over demos.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-8 max-w-[72ch]">
+          Football found Opta. Opta found ML. ML found SDE. Same week. Never
+          looked back.
+        </p>
+
+        <div className="mb-12">
+          <Button variant="default" href="/work">
+            Football Impact Rating →
+          </Button>
+        </div>
+
+        {/* The Club – Arsenal quote wall – static, no hover */}
+        <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink/35 mb-5">
+          The Club
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {[
+            {
+              quote:
+                'Arsenal is in my blood and in my heart. I said I am a Gunner for life, I didn\'t lie. Once a Gunner, always a Gunner.',
+              author: 'Thierry Henry',
+              variant: 'teal' as const,
+            },
+            {
+              quote:
+                'When you play for Arsenal, you can\'t just go through the motions. You have to win games, no matter when, home or away, youth team or reserves.',
+              author: 'Ian Wright',
+              variant: 'coral' as const,
+            },
+            {
+              quote:
+                'Sometimes, there is no more exciting way to live than being a Gunner.',
+              author: 'Kevin Campbell',
+              variant: 'purple' as const,
+            },
+            {
+              quote: 'I always thought the assist meant more than the goal.',
+              author: 'Aditya Jha',
+              variant: 'magenta' as const,
+            },
+          ].map(({ quote, author, variant }) => (
+            <Card key={author} variant={variant} noHover className="p-6">
+              <blockquote className="font-body font-medium text-sm leading-relaxed text-bone/80 mb-3">
+                "{quote}"
+              </blockquote>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-bone/35">
+                {author}
+              </p>
+            </Card>
+          ))}
         </div>
       </SectionWrapper>
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S6 — INNER LIFE
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="inner-life" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
+      {/* ══════════════════════════════════════════════════
+          S6 — CITIES (compact, low emphasis)
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="cities" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
           06
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            06 / Inner Life
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            What Else
-          </h2>
-        </div>
+        <SectionHeader index="06" eyebrow="Cities" title="What It Cost & Built" />
 
-        {/* Poem card */}
-        <Card variant="default" className="p-8 mb-8">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-ink/50 mb-5">
-            FROM THE DIARY · UNTITLED
-          </p>
-          <div className="font-body italic font-medium text-base leading-loose border-l-[4px] border-strike pl-5 text-ink">
-            The city changes but the weight stays the same,<br />
-            I unpack myself into every new room -<br />
-            hang my habits on unfamiliar nails,<br />
-            and call it home before morning comes.<br />
-            <br />
-            Some things travel light.<br />
-            I am not one of them.
-          </div>
-        </Card>
-
-        {/* Interest cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="bg-ink text-bone border-[3px] border-ink p-5">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/40 mb-3">
-              Films
+          <div className="bg-coral border-[3px] border-ink p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              What It Cost
             </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-bone/80">
-              <strong>Parasite.</strong> 12 Angry Men. Mad Max: Fury Road. Grave of the
-              Fireflies. Dune. The Dark Knight. Joker. Black Friday. PK. Cinema that
-              earns its runtime instead of just filling it - I have very little patience
-              for movies that are two and a half hours long for no reason other than
-              confidence.
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/90">
+              Childhood friendships with expiry dates. A home city that exists
+              only in conversation. The ease of being known before you&apos;ve
+              earned it — never had that.
             </p>
           </div>
-          <div className="border-[3px] border-ink p-5">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              Music
+          <div className="bg-purple border-[3px] border-ink p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              What It Built
             </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/85">
-              Qawali is the genre, full stop. <strong>Nusrat Fateh Ali Khan</strong> is
-              god, and I will not be entertaining counterarguments. Kendrick Lamar is the
-              closest thing in English - <em>Good Kid, M.A.A.D City</em> will never be
-              topped, and I&apos;ve stopped pretending I&apos;m open-minded about this.
-              I&apos;m in it for the lyrics: the intricate, clever ones that hit
-              differently the third time you actually sit with them instead of just having
-              them on in the background like furniture.
-            </p>
-          </div>
-          <div className="bg-strike border-[3px] border-ink p-5">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              The Diary
-            </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/85">
-              I carry a little diary everywhere, which is either deeply old-fashioned or
-              deeply unhinged depending on who you ask. My thoughts go in and come out as
-              poems - Hindi and English, love and grief and limerence and melancholy,
-              occasionally in the same poem because apparently I contain multitudes and
-              none of them are organized. The day I wrote my first one, I felt seen. Not
-              by anyone else. By myself. That was, somehow, enough.
-            </p>
-          </div>
-          <div className="border-[3px] border-ink p-5">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-3">
-              What I Watch
-            </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/85">
-              Documentary YouTube about literally anything. Serbian mafia at 2 AM.
-              Chinese education models. Demon whisperers - real ones, allegedly. Music
-              band feuds from decades I wasn&apos;t alive for. The subject doesn&apos;t
-              matter; what gets me every time is watching someone be genuinely,
-              embarrassingly obsessed with something. I find it more inspiring than most
-              motivational content, and considerably more entertaining.
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/90">
+              A brain that reads rooms in seconds. Emotional maturity that
+              arrived uninvited but on time. Extroversion that started as
+              survival and became genuine. A childish heart that refused every
+              eviction notice.
             </p>
           </div>
         </div>
@@ -537,59 +591,155 @@ export default function AboutPage() {
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S7 — MOTTOS
-      ════════════════════════════════════════════════ */}
-      <SectionWrapper id="mottos" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
+      {/* ══════════════════════════════════════════════════
+          S7 — INNER LIFE
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="inner-life" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
           07
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            07 / Mottos
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            What Organises Me
-          </h2>
-        </div>
+        <SectionHeader index="07" eyebrow="Inner Life" title="What Else" />
 
-        {/* Full‑bleed yellow pull quote */}
-        <blockquote className="font-display font-extrabold text-2xl md:text-4xl leading-tight tracking-[-0.02em] bg-strike border-[3px] border-ink p-8 mb-10">
-          &ldquo;Prepare for hell. Wake up loving it anyway.&rdquo;
-        </blockquote>
-
-        {/* Motto cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card variant="yellow" className="p-8">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/50 mb-4">
-              Antonio Gramsci · via Aditya Jha
+        {/* Interest cards – static, no hover */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          <Card variant="teal" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              Films
             </p>
-            <blockquote className="font-display font-extrabold text-2xl leading-tight tracking-[-0.01em] mb-4">
-              &ldquo;Pessimism of intellect, optimism of will.&rdquo;
-            </blockquote>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/80">
-              Plan for everything. Run every bad scenario in advance, because the world
-              is tough and the challenges will come for all of us eventually, no
-              exceptions, no VIP line. But wake up loving it anyway - yourself, other
-              people, the whole inconvenient mess of it. It&apos;s a beautiful world and
-              I&apos;m a beautiful, slightly over-engineered part of it. That&apos;s the
-              balance I try to hold.
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/90">
+              Parasite. 12 Angry Men. Mad Max: Fury Road. Grave of the
+              Fireflies. Dune. The Dark Knight. Joker. Black Friday. PK. Films
+              that earn their runtime. No patience for two-and-a-half hours of
+              confident pacing.
             </p>
           </Card>
-          <Card variant="ink" className="p-8">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/40 mb-4">
-              Personal · Found in the diary
+          <Card variant="blue" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45 mb-4">
+              Music
             </p>
-            <blockquote className="font-display font-extrabold text-2xl leading-tight tracking-[-0.01em] text-bone mb-4">
-              &ldquo;Humans are meant to create, not consume.&rdquo;
+            <p className="font-body font-medium text-sm leading-relaxed text-ink/80">
+              Qawali. Full stop. Nusrat Fateh Ali Khan is not a debate. Kendrick
+              Lamar is the closest thing in English —{' '}
+              <em>Good Kid, M.A.A.D City</em> is untouchable and I&apos;ve
+              stopped pretending otherwise. I&apos;m in it for the lyrics: the
+              ones that hit differently the third time you actually sit with
+              them.
+            </p>
+          </Card>
+          <Card variant="yellow" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45 mb-4">
+              The Diary
+            </p>
+            <p className="font-body font-medium text-sm leading-relaxed text-ink/80">
+              I carry a little diary everywhere. Thoughts go in as prose, come
+              out as poems — Hindi and English, love, grief, limerence, that
+              specific feeling of being the new person in a city again. The day
+              I wrote my first one, I felt seen. Not by anyone else. By myself.
+              That was enough.
+            </p>
+          </Card>
+          <Card variant="coral" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/50 mb-4">
+              2 AM YouTube
+            </p>
+            <p className="font-body font-medium text-sm leading-relaxed text-bone/80">
+              Serbian mafia. Chinese education models. Demon whisperers — real
+              ones, allegedly. Music feuds from decades I wasn&apos;t alive for.
+              The subject never matters. What gets me every time is someone being
+              genuinely, embarrassingly obsessed with something. More useful than
+              most productivity content.
+            </p>
+          </Card>
+        </div>
+
+{/* Poem — linked to Instagram (standard hover) */}
+<a
+  href="https://www.instagram.com/thoughts.by.adi/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block border-[3px] border-ink shadow-[8px_8px_0_var(--color-ink)] overflow-hidden cursor-pointer transition-all duration-150 hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fault"
+>
+  <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
+    <div className="bg-ink flex flex-col justify-between px-6 py-8 border-b-[3px] md:border-b-0 md:border-r-[3px] border-ink/20 min-h-[240px]">
+      <div>
+        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-bone/35 mb-6">
+          From the Diary - Title
+        </p>
+        <h3 className="font-display font-extrabold text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.03em] text-bone -ml-0.5">
+          Icarus<span className="text-fault">.</span>
+        </h3>
+      </div>
+      <p className="font-mono text-[9px] font-bold uppercase tracking-[0.1em] text-bone/25 mt-8">
+        Hindi &amp; English · Writing Since 2020
+      </p>
+    </div>
+
+    <div className="bg-bone p-8 overflow-y-auto max-h-[460px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-fault [&::-webkit-scrollbar-track]:bg-transparent">
+      <div className="border-l-[4px] border-fault pl-6">
+        <p className="font-body italic font-medium text-sm leading-[2.2] text-ink/85 whitespace-pre-line">
+          {poem}
+        </p>
+      </div>
+    </div>
+  </div>
+</a>
+      </SectionWrapper>
+
+      <SectionRule />
+
+      {/* ══════════════════════════════════════════════════
+          S8 — MOTTOS (vertical stack)
+      ══════════════════════════════════════════════════ */}
+      <SectionWrapper id="mottos" className="relative">
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
+          08
+        </span>
+
+        <SectionHeader index="08" eyebrow="Mottos" title="What Organises Me" />
+
+        <blockquote className="font-display font-extrabold text-[clamp(1.6rem,4vw,2.5rem)] leading-tight tracking-[-0.025em] bg-strike border-[3px] border-ink p-8 mb-10 max-w-[32ch]">
+          "Prepare for hell. Wake up loving it anyway."
+        </blockquote>
+
+        {/* Motto cards – static, no hover */}
+        <div className="flex flex-col gap-5">
+          <Card variant="blue" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/40 mb-4">
+              Arsène Wenger
+            </p>
+            <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-ink mb-3">
+              "To achieve great things, you must first believe it."
             </blockquote>
-            <p className="font-body font-medium text-sm leading-relaxed text-bone/70">
-              The day I wrote my first poem, I understood the difference. Consuming is
-              finding yourself in collages of other people&apos;s work - borrowed shapes,
-              secondhand feelings. Creating is projecting yourself fully: vulnerable,
-              authentic, a one-to-one twin of the thing you actually made. That&apos;s
-              the real stuff. Everything else is just scrolling with extra steps.
+            <p className="font-body text-xs text-ink/45 italic">
+              No annotation. Stands alone.
+            </p>
+          </Card>
+          <Card variant="yellow" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/40 mb-4">
+              Gramsci, via me
+            </p>
+            <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-ink mb-3">
+              "Pessimism of intellect, optimism of will."
+            </blockquote>
+            <p className="font-body font-medium text-xs leading-relaxed text-ink/70">
+              Plan for the worst. Run every bad scenario in advance. The world
+              is difficult and the challenges come for everyone — no exceptions,
+              no VIP line. But wake up with love anyway. It&apos;s a beautiful
+              world. I&apos;m a beautiful, slightly over-engineered part of it.
+            </p>
+          </Card>
+          <Card variant="magenta" noHover className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/50 mb-4">
+              From the diary
+            </p>
+            <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-bone mb-3">
+              "Humans are meant to create, not consume."
+            </blockquote>
+            <p className="font-body font-medium text-xs leading-relaxed text-bone/75">
+              Consuming is finding yourself in collages of other people&apos;s
+              work. Creating is projecting yourself fully — vulnerable, one-to-one,
+              a twin of something you actually made. That&apos;s the real stuff.
             </p>
           </Card>
         </div>
@@ -597,31 +747,26 @@ export default function AboutPage() {
 
       <SectionRule />
 
-      {/* ════════════════════════════════════════════════
-          S8 — CLOSER
-      ════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════════
+          S9 — CLOSER
+      ══════════════════════════════════════════════════ */}
       <SectionWrapper id="contact" className="relative">
-        <span className="absolute right-8 top-4 font-display font-extrabold text-[180px] text-ink/4 leading-none pointer-events-none select-none">
-          08
+        <span className="absolute right-6 top-2 font-display font-extrabold text-[clamp(120px,18vw,200px)] text-ink/[0.04] leading-none pointer-events-none select-none">
+          09
         </span>
 
-        <div className="flex items-center gap-3 pb-4 mb-8 border-b-[3px] border-ink">
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            08 / Contact
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-[-0.02em]">
-            Let&apos;s Talk
-          </h2>
-        </div>
+        <SectionHeader index="09" eyebrow="Contact" title="Let's Talk" />
 
-        <p className="font-body font-medium text-xl leading-relaxed text-ink mb-8 max-w-[75ch]">
-          I want to wake up, look in the mirror, and see someone smiling back - someone
-          whose work made something easier for someone else, who built things with love
-          and meant both words equally. That&apos;s the long game. I&apos;m playing it,
-          badly some days, but I&apos;m playing it.
+        <p className="font-body font-medium text-xl leading-relaxed text-ink mb-4 max-w-[60ch]">
+          I want to build things that run in production, help actual people, and
+          were worth building right. Everything else is noise.
+        </p>
+        <p className="font-body font-medium text-base leading-relaxed text-ink/55 mb-10 max-w-[60ch]">
+          If that sounds like someone you&apos;d work with — or argue with about
+          football tactics — I&apos;m around.
         </p>
 
-        <div className="flex flex-wrap gap-4 mb-12">
+        <div className="flex flex-wrap gap-4">
           <Button variant="primary" href="mailto:adityajha1606@gmail.com">
             Email Me
           </Button>
@@ -632,18 +777,10 @@ export default function AboutPage() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline transition-all duration-150 border-ink bg-fault text-bone shadow-[4px_4px_0_var(--color-ink)] hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] border-ink bg-fault text-bone px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline shadow-[4px_4px_0_var(--color-ink)] transition-all duration-150 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[1px_1px_0_var(--color-ink)]"
           >
-            Grab My Resume (PDF)
+            Grab Resume (PDF)
           </a>
-        </div>
-
-        {/* Auth stamp — slightly rotated */}
-        <div className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.12em] leading-relaxed border-2 border-fault text-fault px-4 py-2.5 -rotate-2 origin-center">
-          AUTHORED BY<br />
-          ADITYA JHA<br />
-          SRMIST · 2026<br />
-          HARD COPY v2
         </div>
       </SectionWrapper>
     </>
