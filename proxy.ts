@@ -19,6 +19,8 @@ export function proxy(request: NextRequest) {
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
+    "report-uri /api/csp-report",
+    "require-trusted-types-for 'script'; trusted-types default",
   ].join('; ')
 
   const requestHeaders = new Headers(request.headers)
