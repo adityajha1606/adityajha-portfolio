@@ -1,0 +1,14 @@
+name: 'DAST – OWASP ZAP Scan'
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # every Sunday midnight
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          target: 'https://adityajha-portfolio-ten.vercel.app'

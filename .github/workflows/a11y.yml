@@ -1,0 +1,23 @@
+name: 'Accessibility Audit'
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Install axe
+        run: npm install -D @axe-core/cli
+      - name: Build and start
+        run: npm run build && npx serve out &
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000
+      - name: Run axe
+        run: npx axe http://localhost:3000 --exit
