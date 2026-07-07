@@ -1,6 +1,7 @@
 name: 'Accessibility Audit'
 
 on:
+  workflow_dispatch: # ← add this
   pull_request:
     branches: [main]
 
