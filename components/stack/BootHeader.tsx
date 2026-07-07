@@ -34,8 +34,7 @@ export function BootHeader() {
         </h1>
 
         <p className="font-body font-medium text-base sm:text-lg text-bone/55 max-w-[48ch] mt-6 leading-relaxed">
-          Everything I&apos;ve pushed, popped, and occasionally overflowed.
-          This is a stack, not a queue — first in stays on the bottom.
+          Everything I&apos;ve put together to ship products, build systems, and learn new things. From the foundations of programming to the latest in AI/ML, this is my personal stack.
         </p>
 
         <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-bone/35">
