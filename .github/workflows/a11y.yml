@@ -1,7 +1,7 @@
 name: 'Accessibility Audit'
 
 on:
-  workflow_dispatch: # ← add this
+  workflow_dispatch:
   pull_request:
     branches: [main]
 
@@ -10,15 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
+
       - run: npm ci
-      - name: Install axe
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Start server in background
+        run: npm run start &
+        env:
+          NODE_ENV: production
+          PORT: 3000
+
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000 --timeout 30000
+
+      - name: Install axe CLI
         run: npm install -D @axe-core/cli
-      - name: Build and start
-        run: npm run build && npx serve out &
-      - name: Wait for server
-        run: npx wait-on http://localhost:3000
-      - name: Run axe
+
+      - name: Run axe accessibility scan
         run: npx axe http://localhost:3000 --exit
