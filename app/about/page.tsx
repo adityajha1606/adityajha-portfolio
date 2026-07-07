@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { SectionRule } from '@/components/ui/SectionRule'
 import { Card, type CardVariant } from '@/components/ui/Card'
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Marquee } from '@/components/ui/Marquee'
 import EducationTimeline from '@/components/about/EducationTimeline'
 
-// ── City data ──
+// ── City data (corrected) ──
 const cities = [
   { name: 'Aurangabad', year: '2005' },
   { name: 'Solapur', year: '2013' },
@@ -39,7 +38,7 @@ const aboutMarqueeItems = [
   'Chennai Made',
 ]
 
-// ── Poem ──
+// ── Poem (em dashes replaced with hyphens) ──
 const poem = `If you were the sun,
 I would be Icarus.
 I would still rise toward you -
@@ -181,7 +180,7 @@ export default function AboutPage() {
 
         <SectionHeader index="01" eyebrow="What I Build" title="The Work" />
 
-        {/* Stat cards – no hover */}
+        {/* Stat cards – simple & direct */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
           <Card variant="blue" noHover className="p-6">
             <span className="font-display font-extrabold text-3xl leading-none text-ink block mb-1">
@@ -222,7 +221,7 @@ export default function AboutPage() {
           house fire.
         </p>
 
-        {/* Before the Code + NMDC – no hover */}
+        {/* Before the Code + NMDC – now coloured */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
           <Card variant="coral" noHover className="p-6">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
@@ -312,23 +311,21 @@ export default function AboutPage() {
           "still works" when nobody&apos;s actually talking anymore.
         </p>
 
-        {/* Craft cards – NMDC linked, Play static */}
+        {/* Craft cards – coral, purple */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Link href="/experience/nmdc" className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fault rounded-none">
-            <Card variant="coral" className="p-6">
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
-                NMDC
-              </p>
-              <p className="font-body italic font-medium text-sm leading-relaxed text-bone/90">
-                Real people, with actual deadlines and actual managers breathing
-                down their necks, used it instead of three WhatsApp groups and a
-                prayer. It saved 2–3 weeks of miscommunication between sites that
-                had previously been running on vibes and forwarded screenshots.
-                That was the first time I felt the gap between "it runs" and "it
-                helps someone" — and I&apos;ve been chasing that gap ever since.
-              </p>
-            </Card>
-          </Link>
+          <Card variant="coral" className="p-6">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
+              NMDC
+            </p>
+            <p className="font-body italic font-medium text-sm leading-relaxed text-bone/90">
+              Real people, with actual deadlines and actual managers breathing
+              down their necks, used it instead of three WhatsApp groups and a
+              prayer. It saved 2–3 weeks of miscommunication between sites that
+              had previously been running on vibes and forwarded screenshots.
+              That was the first time I felt the gap between "it runs" and "it
+              helps someone" — and I&apos;ve been chasing that gap ever since.
+            </p>
+          </Card>
           <Card variant="purple" noHover className="p-6">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
               The Play
@@ -357,7 +354,7 @@ export default function AboutPage() {
 
         <SectionHeader index="04" eyebrow="Origin" title="Where It Started" />
 
-        {/* Stat cards – no hover */}
+        {/* Stat cards – blue, coral */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
           <Card variant="blue" noHover className="p-6">
             <span className="font-display font-extrabold text-4xl leading-none text-ink block mb-1">
@@ -377,7 +374,7 @@ export default function AboutPage() {
           </Card>
         </div>
 
-        {/* Horizontal city timeline (unchanged) */}
+        {/* Horizontal city timeline */}
         <div className="relative overflow-x-auto -mx-8 md:-mx-14 lg:-mx-20 px-8 md:px-14 lg:px-20 pb-2 mb-10">
           <div className="relative flex items-start min-w-max py-2">
             <div
@@ -442,7 +439,7 @@ export default function AboutPage() {
 
         <SectionHeader index="05" eyebrow="Football" title="The Tactical Brain" />
 
-        {/* Stat cards – no hover */}
+        {/* Stat cards – blue, teal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
           <Card variant="blue" noHover className="p-6">
             <span className="font-display font-extrabold text-4xl leading-none text-ink block mb-1">
@@ -462,7 +459,7 @@ export default function AboutPage() {
           </Card>
         </div>
 
-        {/* Cruyff quotes – static, no hover */}
+        {/* Cruyff quotes – purple, magenta */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
           <Card variant="purple" noHover className="p-6">
             <blockquote className="font-display font-extrabold text-xl leading-tight tracking-[-0.01em] text-bone mb-3">
@@ -504,13 +501,17 @@ export default function AboutPage() {
           looked back.
         </p>
 
+        {/* 🔴 Football Impact Rating → now a red button */}
         <div className="mb-12">
-          <Button variant="default" href="/work">
+          <a
+            href="/work"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] border-ink bg-fault text-bone px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline shadow-[4px_4px_0_var(--color-ink)] transition-all duration-150 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[1px_1px_0_var(--color-ink)]"
+          >
             Football Impact Rating →
-          </Button>
+          </a>
         </div>
 
-        {/* The Club – Arsenal quote wall – static, no hover */}
+        {/* The Club – Arsenal quote wall */}
         <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink/35 mb-5">
           The Club
         </p>
@@ -539,7 +540,7 @@ export default function AboutPage() {
               author: 'Aditya Jha',
               variant: 'magenta' as const,
             },
-          ].map(({ quote, author, variant }) => (
+          ].map(({ quote, author, variant }: { quote: string; author: string; variant: CardVariant }) => (
             <Card key={author} variant={variant} noHover className="p-6">
               <blockquote className="font-body font-medium text-sm leading-relaxed text-bone/80 mb-3">
                 "{quote}"
@@ -601,7 +602,7 @@ export default function AboutPage() {
 
         <SectionHeader index="07" eyebrow="Inner Life" title="What Else" />
 
-        {/* Interest cards – static, no hover */}
+        {/* Interest cards – teal, blue, yellow, coral */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
           <Card variant="teal" noHover className="p-6">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bone/60 mb-4">
@@ -653,37 +654,32 @@ export default function AboutPage() {
           </Card>
         </div>
 
-{/* Poem — linked to Instagram (standard hover) */}
-<a
-  href="https://www.instagram.com/thoughts.by.adi/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block border-[3px] border-ink shadow-[8px_8px_0_var(--color-ink)] overflow-hidden cursor-pointer transition-all duration-150 hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fault"
->
-  <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
-    <div className="bg-ink flex flex-col justify-between px-6 py-8 border-b-[3px] md:border-b-0 md:border-r-[3px] border-ink/20 min-h-[240px]">
-      <div>
-        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-bone/35 mb-6">
-          From the Diary - Title
-        </p>
-        <h3 className="font-display font-extrabold text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.03em] text-bone -ml-0.5">
-          Icarus<span className="text-fault">.</span>
-        </h3>
-      </div>
-      <p className="font-mono text-[9px] font-bold uppercase tracking-[0.1em] text-bone/25 mt-8">
-        Hindi &amp; English · Writing Since 2020
-      </p>
-    </div>
+        {/* Poem — title centered in left column */}
+        <div className="border-[3px] border-ink overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
+            <div className="bg-ink flex flex-col justify-between px-6 py-8 border-b-[3px] md:border-b-0 md:border-r-[3px] border-ink/20 min-h-[240px]">
+              <div>
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-bone/35 mb-6">
+                  From the Diary - Title
+                </p>
+                <h3 className="font-display font-extrabold text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.03em] text-bone -ml-0.5">
+                  Icarus<span className="text-fault">.</span>
+                </h3>
+              </div>
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.1em] text-bone/25 mt-8">
+                Hindi &amp; English · Writing Since 2020
+              </p>
+            </div>
 
-    <div className="bg-bone p-8 overflow-y-auto max-h-[460px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-fault [&::-webkit-scrollbar-track]:bg-transparent">
-      <div className="border-l-[4px] border-fault pl-6">
-        <p className="font-body italic font-medium text-sm leading-[2.2] text-ink/85 whitespace-pre-line">
-          {poem}
-        </p>
-      </div>
-    </div>
-  </div>
-</a>
+            <div className="bg-bone p-8 overflow-y-auto max-h-[460px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-fault [&::-webkit-scrollbar-track]:bg-transparent">
+              <div className="border-l-[4px] border-fault pl-6">
+                <p className="font-body italic font-medium text-sm leading-[2.2] text-ink/85 whitespace-pre-line">
+                  {poem}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </SectionWrapper>
 
       <SectionRule />
@@ -702,7 +698,6 @@ export default function AboutPage() {
           "Prepare for hell. Wake up loving it anyway."
         </blockquote>
 
-        {/* Motto cards – static, no hover */}
         <div className="flex flex-col gap-5">
           <Card variant="blue" noHover className="p-6">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/40 mb-4">
@@ -770,9 +765,13 @@ export default function AboutPage() {
           <Button variant="primary" href="mailto:adityajha1606@gmail.com">
             Email Me
           </Button>
-          <Button variant="default" href="/contact">
+          {/* 🔵 Book a Call → now a blue button */}
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap border-[3px] border-ink bg-blue text-bone px-5 py-2.5 font-display font-extrabold text-[13px] uppercase tracking-wide no-underline shadow-[4px_4px_0_var(--color-ink)] transition-all duration-150 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[1px_1px_0_var(--color-ink)]"
+          >
             Book a Call →
-          </Button>
+          </a>
           <a
             href="/resume.pdf"
             target="_blank"
