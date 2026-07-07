@@ -44,8 +44,7 @@ export default function StackPage() {
           Five Layers, Bottom-Up
         </h2>
         <p className="font-body font-medium text-base text-ink/60 max-w-[62ch] mb-10">
-          Foundations at the bottom, systems design at the top. Click any tile to see how I’ve
-          used that tool — every entry comes from a real project.
+          Stuff I have used, stuff I have shipped, and stuff I am still learning.
         </p>
         <StackExplorer layers={stackLayers} defaultOpenId="infra-backend" />
       </SectionWrapper>
