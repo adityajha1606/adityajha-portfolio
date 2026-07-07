@@ -16,10 +16,13 @@ jobs:
         with:
           node-version: 22
 
-      - run: npm install # ← changed from npm ci
+      - run: npm install
 
       - name: Build Next.js
         run: npm run build
+        env:
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
       - name: Start server in background
         run: npm run start &
