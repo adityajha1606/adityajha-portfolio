@@ -45,7 +45,7 @@ function CredentialCard({
       <p className="font-display font-extrabold text-sm uppercase tracking-widest text-ink">
         {label}
       </p>
-      <p className="font-body font-medium text-sm leading-relaxed flex-1 text-ink/80">
+      <p className="font-body font-medium text-sm leading-relaxed flex-1 text-ink/90">
         {description}
       </p>
       <span className="font-display font-extrabold text-sm uppercase tracking-wide border-b-2 border-ink pb-0.5 group-hover:gap-2 transition-all">

@@ -208,14 +208,14 @@ export default function AboutPage() {
           </Card>
         </div>
 
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           The job I want: backend and infrastructure, ML fluency as the sharp
           edge. Not the person writing Jupyter notebooks that never see
           production. The person building what they run on — the pipeline, the
           system, the thing that stays alive at 3&nbsp;AM when it really
           shouldn&apos;t.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-10 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-10 max-w-[72ch]">
           I want to understand the model <em>and</em> the environment it&apos;s
           living in. One without the other is either a science project or a
           house fire.
@@ -296,13 +296,13 @@ export default function AboutPage() {
           I have never once taken it as one."
         </blockquote>
 
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           Minimalism can keep knocking. I&apos;m not home. I&apos;m a
           hyper-detailing enthusiast — I will raise the bar past what was asked,
           past what was expected, past the point where most people would even
           notice, purely because the noticing was never the point.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-10 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-10 max-w-[72ch]">
           I think code deserves the same care you&apos;d give a relationship you
           actually intend to keep. How you name things. How the pieces talk to
           each other. The rhythm a well-built system falls into once you finally
@@ -408,17 +408,17 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           Dad worked in sales. Sales moves you. That&apos;s the whole
           explanation.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           Every couple of years: new city, new school, new accent to fake for a
           semester. I never got to be known before I opened my mouth — I had to
           earn every room fast. That&apos;s where the room-reading came from.
           Eyes don&apos;t lie. I still live by that.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 max-w-[72ch]">
           2008: Dad brought home an all-in-one PC. We did a small pooja for it
           first, because in our house, new technology got a proper welcome. I had
           30 minutes of dongle internet per day and I squeezed every second.
@@ -481,13 +481,13 @@ export default function AboutPage() {
           </Card>
         </div>
 
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           I wasn&apos;t the goal scorer. I was the reason the goal scorer had
           the ball. Defensive midfielder — the metronome, the guy who wins it
           back, resets the shape, and makes the team look more organised than it
           actually is.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-4 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-4 max-w-[72ch]">
           The "pausa" was my thing: knowing when to hold the tempo and when to
           break it. In my age group I was one of the best defensively and
           athletically, which is the most restrained way I know how to say I was
@@ -496,7 +496,7 @@ export default function AboutPage() {
           satisfaction, and it&apos;s the same instinct that makes me care about
           infrastructure over features, and systems over demos.
         </p>
-        <p className="font-body font-medium text-base leading-relaxed text-ink/80 mb-8 max-w-[72ch]">
+        <p className="font-body font-medium text-base leading-relaxed text-ink/90 mb-8 max-w-[72ch]">
           Football found Opta. Opta found ML. ML found SDE. Same week. Never
           looked back.
         </p>
@@ -619,7 +619,7 @@ export default function AboutPage() {
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45 mb-4">
               Music
             </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/80">
+            <p className="font-body font-medium text-sm leading-relaxed text-ink/90">
               Qawali. Full stop. Nusrat Fateh Ali Khan is not a debate. Kendrick
               Lamar is the closest thing in English —{' '}
               <em>Good Kid, M.A.A.D City</em> is untouchable and I&apos;ve
@@ -632,7 +632,7 @@ export default function AboutPage() {
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45 mb-4">
               The Diary
             </p>
-            <p className="font-body font-medium text-sm leading-relaxed text-ink/80">
+            <p className="font-body font-medium text-sm leading-relaxed text-ink/90">
               I carry a little diary everywhere. Thoughts go in as prose, come
               out as poems — Hindi and English, love, grief, limerence, that
               specific feeling of being the new person in a city again. The day

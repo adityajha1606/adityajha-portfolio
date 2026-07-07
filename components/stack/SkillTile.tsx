@@ -24,7 +24,7 @@ export function SkillTile({ tool, onDark = false, isOpen, onToggle }: SkillTileP
   const labelAccent = onDark
     ? 'border-l-[2px] border-bone pl-2'
     : 'border-l-[2px] border-coral pl-2'
-  const bodyText = onDark ? 'text-bone/90' : 'text-ink/80'
+  const bodyText = onDark ? 'text-bone/90' : 'text-ink/90'
   const dashColor = onDark ? 'border-bone/50' : 'border-coral/50'
 
   return (
