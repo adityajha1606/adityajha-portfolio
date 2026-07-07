@@ -25,7 +25,7 @@ export function Greeting() {
 
   return (
     <motion.p
-      className="font-mono text-[11px] font-bold text-ink/800 mb-2 tracking-wider"
+      className="font-mono text-[11px] font-bold text-ink/90 mb-2 tracking-wider"
       initial={{ opacity: 0 }}
       animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
