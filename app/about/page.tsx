@@ -654,8 +654,13 @@ export default function AboutPage() {
           </Card>
         </div>
 
-        {/* Poem — title centered in left column */}
-        <div className="border-[3px] border-ink overflow-hidden">
+        {/* Poem — linked to Instagram with standard hover */}
+        <a
+          href="https://www.instagram.com/thoughts.by.adi/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block border-[3px] border-ink shadow-[8px_8px_0_var(--color-ink)] overflow-hidden cursor-pointer transition-all duration-150 hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[2px_2px_0_var(--color-ink)]"
+        >
           <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
             <div className="bg-ink flex flex-col justify-between px-6 py-8 border-b-[3px] md:border-b-0 md:border-r-[3px] border-ink/20 min-h-[240px]">
               <div>
@@ -679,7 +684,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </SectionWrapper>
 
       <SectionRule />
