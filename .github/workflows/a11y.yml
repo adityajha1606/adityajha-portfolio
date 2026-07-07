@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 22
 
-      - run: npm ci
+      - run: npm install # ← changed from npm ci
 
       - name: Build Next.js
         run: npm run build
